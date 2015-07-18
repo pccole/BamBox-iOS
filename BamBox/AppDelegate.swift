@@ -17,6 +17,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // failure not as a trailing closure
+        
+        BBWebService.shared.postPlaylist("new playlist", success: { () -> () in
+            // success code here
+            }, failure: { () -> () in
+            
+        })
+        
+        
+        // failure as trailing closure and return type
+        BBWebService.shared.postPlaylist2("hey there", success: {
+            (done) -> (Bool) in
+            // success code here
+            if done {
+               return true
+            } else {
+               return false
+            }
+            }) { 
+            () -> () in
+                // failure code here
+        }
+        
+        BBWebService.shared.postPlaylist2("wam bam", success: { (done) -> (Bool) in
+            //success coded here
+            return true
+            }, failure: { () -> () in
+            // failure code here
+        })
+        
         return true
     }
 
@@ -77,7 +108,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // Replace this with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             NSLog("Unresolved error \(wrappedError), \(wrappedError.userInfo)")
+#if DEBUG
             abort()
+#endif
         }
         
         return coordinator
