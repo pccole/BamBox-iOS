@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		0E9E8D7BF5A7CCFDC5BD8E8E /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6C0849A0DEBAFD835009BEB /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		6322B29789767E3585B014C8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6C0849A0DEBAFD835009BEB /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		94BFC5A41BD0A14900E8A95F /* BlueTooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BFC5A31BD0A14900E8A95F /* BlueTooth.swift */; settings = {ASSET_TAGS = (); }; };
+		94BFC5A61BD0B06400E8A95F /* CentralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BFC5A51BD0B06400E8A95F /* CentralManager.swift */; settings = {ASSET_TAGS = (); }; };
+		94BFC5A81BD0B0B200E8A95F /* PeripheralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BFC5A71BD0B0B200E8A95F /* PeripheralManager.swift */; settings = {ASSET_TAGS = (); }; };
 		94CD49B31BAE4A41000E0F62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CD49B21BAE4A41000E0F62 /* AppDelegate.swift */; };
 		94CD49BB1BAE4A41000E0F62 /* BamBox.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 94CD49B91BAE4A41000E0F62 /* BamBox.xcdatamodeld */; };
 		94CD49BD1BAE4A41000E0F62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94CD49BC1BAE4A41000E0F62 /* Assets.xcassets */; };
@@ -44,6 +47,9 @@
 
 /* Begin PBXFileReference section */
 		885963D7DB7A65CAD8E0227D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		94BFC5A31BD0A14900E8A95F /* BlueTooth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueTooth.swift; sourceTree = "<group>"; };
+		94BFC5A51BD0B06400E8A95F /* CentralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CentralManager.swift; sourceTree = "<group>"; };
+		94BFC5A71BD0B0B200E8A95F /* PeripheralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralManager.swift; sourceTree = "<group>"; };
 		94CD49AF1BAE4A41000E0F62 /* BamBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BamBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94CD49B21BAE4A41000E0F62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94CD49BA1BAE4A41000E0F62 /* BamBox.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BamBox.xcdatamodel; sourceTree = "<group>"; };
@@ -112,6 +118,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		94BFC5A21BD0A0D700E8A95F /* BLE */ = {
+			isa = PBXGroup;
+			children = (
+				94BFC5A31BD0A14900E8A95F /* BlueTooth.swift */,
+				94BFC5A51BD0B06400E8A95F /* CentralManager.swift */,
+				94BFC5A71BD0B0B200E8A95F /* PeripheralManager.swift */,
+			);
+			name = BLE;
+			sourceTree = "<group>";
+		};
 		94CD49A61BAE4A41000E0F62 = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +153,7 @@
 		94CD49B11BAE4A41000E0F62 /* BamBox */ = {
 			isa = PBXGroup;
 			children = (
+				94BFC5A21BD0A0D700E8A95F /* BLE */,
 				94CD49E31BAE4A82000E0F62 /* WebService */,
 				94DCABBC1BD08BF4006CB022 /* Data Handler */,
 				94DCABB51BC88F5F006CB022 /* Models */,
@@ -478,8 +495,11 @@
 				94DCABB81BC89E94006CB022 /* StartPlaylistVC.swift in Sources */,
 				94CD49B31BAE4A41000E0F62 /* AppDelegate.swift in Sources */,
 				94DCABBE1BD08D12006CB022 /* PlaylistManager.swift in Sources */,
+				94BFC5A81BD0B0B200E8A95F /* PeripheralManager.swift in Sources */,
+				94BFC5A41BD0A14900E8A95F /* BlueTooth.swift in Sources */,
 				94DCABB21BC88F45006CB022 /* HomeScreenVC.swift in Sources */,
 				94DCABBB1BC8AE81006CB022 /* Playlist.swift in Sources */,
+				94BFC5A61BD0B06400E8A95F /* CentralManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

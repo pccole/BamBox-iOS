@@ -17,7 +17,6 @@ class StartPlaylistVC: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        playlistTextField.text = ""
         playlistTextField.delegate = self
         playlistTextField.returnKeyType = UIReturnKeyType.Done
         playlistTextField.textColor = UIColor.whiteColor()

@@ -14,12 +14,11 @@ class WebService:NSObject {
     
     static let shared = WebService()
     
-    let baseURL: String = "http://be-util02.jrforrest.net:9292/"
+    let baseURL: String = "http://be-util02.jrforrest.net:9292/api"
     
     func postPlaylist(playlist:String, completion:(Bool) -> Void) {
         let params = ["name":playlist]
-        
-        Alamofire.request(.POST, "\(baseURL)playlist", parameters:params)
+        Alamofire.request(.POST, "\(baseURL)/playlist", parameters:params)
         .responseJSON { (request, response, result) -> Void in
             print(request)
             print(response)

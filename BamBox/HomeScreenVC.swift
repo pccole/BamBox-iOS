@@ -27,7 +27,6 @@ class HomeScreenVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        print("whats going on???")
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,9 +35,13 @@ class HomeScreenVC: UIViewController {
     }
     
     @IBAction func startPlaylistTapped(sender: AnyObject) {
-        self.navigationController?.pushViewController(StartPlaylistVC(nibName:nil, bundle:nil), animated: true)
+//        self.navigationController?.pushViewController(StartPlaylistVC(nibName:nil, bundle:nil), animated: true)
+        Bluetooth.singleton.switchBroadcastingState()
     }
 
+    @IBAction func scanPlaylistTapped(sender: AnyObject) {
+        Bluetooth.singleton.scan()
+    }
     /*
     // MARK: - Navigation
 

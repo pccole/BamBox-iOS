@@ -43,6 +43,9 @@
                         <constraint firstAttribute="width" constant="115" id="9v7-H8-iYD"/>
                     </constraints>
                     <state key="normal" backgroundImage="Scan"/>
+                    <connections>
+                        <action selector="scanPlaylistTapped:" destination="-1" eventType="touchUpInside" id="epl-Rt-one"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="248" text="Scan Playlist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ozk-am-iNR">
                     <rect key="frame" x="252" y="411" width="97" height="21"/>
