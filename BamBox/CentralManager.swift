@@ -10,3 +10,15 @@ import Foundation
 import CoreBluetooth
 import CoreLocation
 
+extension BLE {
+    public func centralManagerDidUpdateState(central: CBCentralManager) {
+        print(central)
+    }
+    
+    public func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
+        print(peripheral)
+        print(advertisementData)
+        print(RSSI)
+        print("central manager did discover")
+    }
+}

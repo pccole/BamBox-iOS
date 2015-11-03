@@ -36,11 +36,11 @@ class HomeScreenVC: UIViewController {
     
     @IBAction func startPlaylistTapped(sender: AnyObject) {
 //        self.navigationController?.pushViewController(StartPlaylistVC(nibName:nil, bundle:nil), animated: true)
-        Bluetooth.singleton.switchBroadcastingState()
+        BLE.singleton.switchBroadcastingState()
     }
 
     @IBAction func scanPlaylistTapped(sender: AnyObject) {
-        Bluetooth.singleton.scan()
+        BLE.singleton.scan()
     }
     /*
     // MARK: - Navigation

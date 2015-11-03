@@ -10,13 +10,7 @@ import Foundation
 import CoreBluetooth
 import CoreLocation
 
-
-public class Bluetooth {
-    static let singleton = BLE.singleton
-}
-
-
-internal class BLE:NSObject, CBPeripheralManagerDelegate, CBCentralManagerDelegate {
+public class BLE:NSObject, CBPeripheralManagerDelegate, CBCentralManagerDelegate {
     
     static let singleton = BLE()
     
@@ -31,21 +25,7 @@ internal class BLE:NSObject, CBPeripheralManagerDelegate, CBCentralManagerDelega
     
     override init() {
         super.init()
-        
-        let string = "com.bambox.BamBox"
-        let data:NSData = string.dataUsingEncoding(NSStringEncoding.init(Int32))
-        
-        
-        let cbuuid = CBUUID(NSUUID: uuid!)
-        var myCharacteristic = CBMutableCharacteristic(type: cbuuid, properties: CBCharacteristicProperties.Read, value: data, permissions: CBAttributePermissions.Readable)
-        
-        
-        
-        
-//        myCharacteristic =
-//            [[CBMutableCharacteristic alloc] initWithType:myCharacteristicUUID
-//                properties:CBCharacteristicPropertyRead
-//                value:myValue permissions:CBAttributePermissionsReadable];
+                
         bluetoothPeripheralManager = CBPeripheralManager(delegate: self, queue: dispatch_get_main_queue(), options:[:])
         centralManager = CBCentralManager(delegate: self, queue: dispatch_get_main_queue(), options:[:])
     }
@@ -71,43 +51,4 @@ internal class BLE:NSObject, CBPeripheralManagerDelegate, CBCentralManagerDelega
     }
 }
 
-extension BLE {
-    internal func centralManagerDidUpdateState(central: CBCentralManager) {
-        print(central)
-    }
-    
-    internal func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
-        print(peripheral)
-        print(advertisementData)
-        print(RSSI)
-        print("central manager did discover")
-    }
-}
 
-extension BLE {
-    internal func peripheralManagerDidUpdateState(peripheral: CBPeripheralManager) {
-        var statusMessage = ""
-        
-        switch peripheral.state {
-        case CBPeripheralManagerState.PoweredOn:
-            statusMessage = "Bluetooth Status: Turned On"
-            
-        case CBPeripheralManagerState.PoweredOff:
-            statusMessage = "Bluetooth Status: Turned Off"
-            
-        case CBPeripheralManagerState.Resetting:
-            statusMessage = "Bluetooth Status: Resetting"
-            
-        case CBPeripheralManagerState.Unauthorized:
-            statusMessage = "Bluetooth Status: Not Authorized"
-            
-        case CBPeripheralManagerState.Unsupported:
-            statusMessage = "Bluetooth Status: Not Supported"
-            
-        default:
-            statusMessage = "Bluetooth Status: Unknown"
-        }
-        
-        print(statusMessage)
-    }
-}

@@ -9,22 +9,22 @@
 /* Begin PBXBuildFile section */
 		0E9E8D7BF5A7CCFDC5BD8E8E /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6C0849A0DEBAFD835009BEB /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		6322B29789767E3585B014C8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6C0849A0DEBAFD835009BEB /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		94BFC5A41BD0A14900E8A95F /* BlueTooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BFC5A31BD0A14900E8A95F /* BlueTooth.swift */; settings = {ASSET_TAGS = (); }; };
-		94BFC5A61BD0B06400E8A95F /* CentralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BFC5A51BD0B06400E8A95F /* CentralManager.swift */; settings = {ASSET_TAGS = (); }; };
-		94BFC5A81BD0B0B200E8A95F /* PeripheralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BFC5A71BD0B0B200E8A95F /* PeripheralManager.swift */; settings = {ASSET_TAGS = (); }; };
+		94BFC5A41BD0A14900E8A95F /* BlueTooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BFC5A31BD0A14900E8A95F /* BlueTooth.swift */; };
+		94BFC5A61BD0B06400E8A95F /* CentralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BFC5A51BD0B06400E8A95F /* CentralManager.swift */; };
+		94BFC5A81BD0B0B200E8A95F /* PeripheralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BFC5A71BD0B0B200E8A95F /* PeripheralManager.swift */; };
 		94CD49B31BAE4A41000E0F62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CD49B21BAE4A41000E0F62 /* AppDelegate.swift */; };
 		94CD49BB1BAE4A41000E0F62 /* BamBox.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 94CD49B91BAE4A41000E0F62 /* BamBox.xcdatamodeld */; };
 		94CD49BD1BAE4A41000E0F62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94CD49BC1BAE4A41000E0F62 /* Assets.xcassets */; };
 		94CD49C01BAE4A41000E0F62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94CD49BE1BAE4A41000E0F62 /* LaunchScreen.storyboard */; };
 		94CD49CB1BAE4A41000E0F62 /* BamBoxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CD49CA1BAE4A41000E0F62 /* BamBoxTests.swift */; };
 		94CD49D61BAE4A41000E0F62 /* BamBoxUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CD49D51BAE4A41000E0F62 /* BamBoxUITests.swift */; };
-		94CD49E51BAE4BC5000E0F62 /* URLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CD49E41BAE4BC5000E0F62 /* URLBuilder.swift */; settings = {ASSET_TAGS = (); }; };
-		94DCABB21BC88F45006CB022 /* HomeScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DCABB01BC88F45006CB022 /* HomeScreenVC.swift */; settings = {ASSET_TAGS = (); }; };
-		94DCABB31BC88F45006CB022 /* HomeScreenVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94DCABB11BC88F45006CB022 /* HomeScreenVC.xib */; settings = {ASSET_TAGS = (); }; };
-		94DCABB81BC89E94006CB022 /* StartPlaylistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DCABB61BC89E94006CB022 /* StartPlaylistVC.swift */; settings = {ASSET_TAGS = (); }; };
-		94DCABB91BC89E94006CB022 /* StartPlaylistVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94DCABB71BC89E94006CB022 /* StartPlaylistVC.xib */; settings = {ASSET_TAGS = (); }; };
-		94DCABBB1BC8AE81006CB022 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DCABBA1BC8AE81006CB022 /* Playlist.swift */; settings = {ASSET_TAGS = (); }; };
-		94DCABBE1BD08D12006CB022 /* PlaylistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DCABBD1BD08D12006CB022 /* PlaylistManager.swift */; settings = {ASSET_TAGS = (); }; };
+		94CD49E51BAE4BC5000E0F62 /* URLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CD49E41BAE4BC5000E0F62 /* URLBuilder.swift */; };
+		94DCABB21BC88F45006CB022 /* HomeScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DCABB01BC88F45006CB022 /* HomeScreenVC.swift */; };
+		94DCABB31BC88F45006CB022 /* HomeScreenVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94DCABB11BC88F45006CB022 /* HomeScreenVC.xib */; };
+		94DCABB81BC89E94006CB022 /* StartPlaylistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DCABB61BC89E94006CB022 /* StartPlaylistVC.swift */; };
+		94DCABB91BC89E94006CB022 /* StartPlaylistVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94DCABB71BC89E94006CB022 /* StartPlaylistVC.xib */; };
+		94DCABBB1BC8AE81006CB022 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DCABBA1BC8AE81006CB022 /* Playlist.swift */; };
+		94DCABBE1BD08D12006CB022 /* PlaylistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DCABBD1BD08D12006CB022 /* PlaylistManager.swift */; };
 		A2E112896F0A356E5A2888A8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6C0849A0DEBAFD835009BEB /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 

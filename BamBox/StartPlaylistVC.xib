@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StartPlaylistVC" customModule="BamBox" customModuleProvider="target">
@@ -20,6 +20,7 @@
                     <subviews>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Playlist" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="87n-J1-Ui4">
                             <rect key="frame" x="0.0" y="1" width="540" height="30"/>
+                            <animations/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="u2Y-0A-bek"/>
                             </constraints>
@@ -29,6 +30,7 @@
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CAw-Rc-mlG">
                             <rect key="frame" x="0.0" y="0.0" width="540" height="1"/>
+                            <animations/>
                             <color key="backgroundColor" red="0.019607843140000001" green="0.93333333330000001" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="4wR-nV-ZVz"/>
@@ -36,12 +38,14 @@
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Cj-oM-1IX">
                             <rect key="frame" x="0.0" y="31" width="540" height="1"/>
+                            <animations/>
                             <color key="backgroundColor" red="0.92156862745098034" green="0.015686274509803921" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="hnf-dG-gWz"/>
                             </constraints>
                         </view>
                     </subviews>
+                    <animations/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="1Cj-oM-1IX" firstAttribute="leading" secondItem="VFE-RU-PgL" secondAttribute="leading" id="0KK-ph-qQT"/>
@@ -57,6 +61,7 @@
                     </constraints>
                 </view>
             </subviews>
+            <animations/>
             <color key="backgroundColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="VFE-RU-PgL" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="116" id="Yyv-Fr-0Sn"/>
