@@ -17,10 +17,9 @@ class WebService:NSObject {
     
     func postPlaylist(playlist:String, completion:(Bool) -> Void) {
         let params = ["name":playlist]
-        Alamofire.request(.POST, "\(baseURL)/playlist", parameters:params)
-            .responseJSON {response in
-                print(response.data)
+        Alamofire.request(.POST, "\(baseURL)/playlist", parameters:params).responseJSON { (request:NSURLRequest?, response:NSHTTPURLResponse?, result:Result<AnyObject>) -> Void in
+            //
+            PlaylistManager.singleton.addPlaylist(Playlist(dictionary: result.value as! [String:AnyObject]))
         }
     }
-    
 }

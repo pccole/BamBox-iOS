@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E9E8D7BF5A7CCFDC5BD8E8E /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6C0849A0DEBAFD835009BEB /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		6322B29789767E3585B014C8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6C0849A0DEBAFD835009BEB /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		0E9E8D7BF5A7CCFDC5BD8E8E /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6C0849A0DEBAFD835009BEB /* Pods.framework */; };
+		6322B29789767E3585B014C8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6C0849A0DEBAFD835009BEB /* Pods.framework */; };
 		94BFC5A41BD0A14900E8A95F /* BlueTooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BFC5A31BD0A14900E8A95F /* BlueTooth.swift */; };
 		94BFC5A61BD0B06400E8A95F /* CentralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BFC5A51BD0B06400E8A95F /* CentralManager.swift */; };
 		94BFC5A81BD0B0B200E8A95F /* PeripheralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BFC5A71BD0B0B200E8A95F /* PeripheralManager.swift */; };
@@ -25,7 +25,7 @@
 		94DCABB91BC89E94006CB022 /* StartPlaylistVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94DCABB71BC89E94006CB022 /* StartPlaylistVC.xib */; };
 		94DCABBB1BC8AE81006CB022 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DCABBA1BC8AE81006CB022 /* Playlist.swift */; };
 		94DCABBE1BD08D12006CB022 /* PlaylistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DCABBD1BD08D12006CB022 /* PlaylistManager.swift */; };
-		A2E112896F0A356E5A2888A8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6C0849A0DEBAFD835009BEB /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		A2E112896F0A356E5A2888A8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6C0849A0DEBAFD835009BEB /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */

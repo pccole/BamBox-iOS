@@ -11,11 +11,22 @@ import UIKit
 public class Playlist {
     
     var id:Int = 0
-    var playlist:String = ""
+    var name:String!
+    var owner_token:String!
+    var participant_token:String!
+    var song_plays_array:[String]!
     
-    init(id:Int, playlist:String) {
-        self.id = id
-        self.playlist = playlist
+    
+    
+    convenience init(dictionary:[String:AnyObject]) {
+        self.init()
+        guard id = dictionary["id"] as! Int else {
+            
+        }
+        name = "hi"
+        owner_token = "hi"
+        participant_token = "hi"
+        song_plays_array = [String]()
     }
     
 }
