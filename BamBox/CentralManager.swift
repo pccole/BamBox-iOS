@@ -8,7 +8,6 @@
 
 import Foundation
 import CoreBluetooth
-import CoreLocation
 
 extension BLE {
     public func centralManagerDidUpdateState(central: CBCentralManager) {
@@ -20,5 +19,9 @@ extension BLE {
         print(advertisementData)
         print(RSSI)
         print("central manager did discover")
+    }
+    
+    public func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {
+        print(peripheral)
     }
 }

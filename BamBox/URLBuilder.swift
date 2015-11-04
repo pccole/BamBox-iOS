@@ -10,7 +10,6 @@ import UIKit
 import Alamofire
 
 class WebService:NSObject {
-    //
     
     static let shared = WebService()
     
@@ -19,10 +18,8 @@ class WebService:NSObject {
     func postPlaylist(playlist:String, completion:(Bool) -> Void) {
         let params = ["name":playlist]
         Alamofire.request(.POST, "\(baseURL)/playlist", parameters:params)
-        .responseJSON { (request, response, result) -> Void in
-            print(request)
-            print(response)
-            print(result)
+            .responseJSON {response in
+                print(response.data)
         }
     }
     

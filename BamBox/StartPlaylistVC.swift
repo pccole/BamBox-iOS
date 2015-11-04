@@ -20,7 +20,7 @@ class StartPlaylistVC: UIViewController, UITextFieldDelegate {
         playlistTextField.delegate = self
         playlistTextField.returnKeyType = UIReturnKeyType.Done
         playlistTextField.textColor = UIColor.whiteColor()
-        playlistTextField.placeholder = "Playlist"
+        playlistTextField.placeholder = "Enter Playlist Name"
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,7 +29,6 @@ class StartPlaylistVC: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        print(textField.text)
         WebService.shared.postPlaylist(textField.text!) { (success) -> Void in
             if success {
                 self.navigationController?.popToRootViewControllerAnimated(true)

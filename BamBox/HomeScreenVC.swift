@@ -16,13 +16,6 @@ class HomeScreenVC: UIViewController {
     @IBOutlet weak var scanPlaylistLabel: UILabel!
     @IBOutlet weak var bamBoxIV: UIImageView!
 
-    
-    
-    
-    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,8 +28,7 @@ class HomeScreenVC: UIViewController {
     }
     
     @IBAction func startPlaylistTapped(sender: AnyObject) {
-//        self.navigationController?.pushViewController(StartPlaylistVC(nibName:nil, bundle:nil), animated: true)
-        BLE.singleton.switchBroadcastingState()
+        self.navigationController?.pushViewController(StartPlaylistVC(nibName:nil, bundle:nil), animated: true)
     }
 
     @IBAction func scanPlaylistTapped(sender: AnyObject) {

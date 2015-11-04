@@ -9,7 +9,6 @@
 import UIKit
 
 public class Playlist {
-
     
     var id:Int = 0
     var playlist:String = ""

@@ -8,20 +8,17 @@
 
 import Foundation
 import CoreBluetooth
-import CoreLocation
 
 public class BLE:NSObject, CBPeripheralManagerDelegate, CBCentralManagerDelegate {
     
     static let singleton = BLE()
     
     let uuid = NSUUID(UUIDString: "3AC92751-8ADE-4DEB-B133-7774E3EE2BFE")
-    let major = "1"
     
-    var beaconRegion: CLBeaconRegion!
     var bluetoothPeripheralManager: CBPeripheralManager!
     var centralManager: CBCentralManager!
     var isBroadcasting = false
-    var dataDictionary = NSDictionary()
+    var dataDictionary = [String:AnyObject]()
     
     override init() {
         super.init()
@@ -33,12 +30,9 @@ public class BLE:NSObject, CBPeripheralManagerDelegate, CBCentralManagerDelegate
     func switchBroadcastingState() {
         if !isBroadcasting {
             if bluetoothPeripheralManager.state == CBPeripheralManagerState.PoweredOn {
-                let major: CLBeaconMajorValue = UInt16(1)
-                let minor: CLBeaconMinorValue = UInt16(1)
-                beaconRegion = CLBeaconRegion(proximityUUID: uuid!, major: major, minor: minor, identifier: "com.bambox.Bambox")
                 isBroadcasting = true
-                dataDictionary = beaconRegion.peripheralDataWithMeasuredPower(nil)
-                bluetoothPeripheralManager.startAdvertising(dataDictionary as? [String : AnyObject])
+                dataDictionary = [CBAdvertisementDataLocalNameKey:"com.BamBox.BamBox2"]
+                bluetoothPeripheralManager.startAdvertising(dataDictionary)
             }
         } else {
             bluetoothPeripheralManager.stopAdvertising()
