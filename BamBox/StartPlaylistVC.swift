@@ -16,11 +16,16 @@ class StartPlaylistVC: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationController?.navigationBar.hidden = false
         playlistTextField.delegate = self
         playlistTextField.returnKeyType = UIReturnKeyType.Done
         playlistTextField.textColor = UIColor.whiteColor()
         playlistTextField.placeholder = "Enter Playlist Name"
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,8 +34,9 @@ class StartPlaylistVC: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        WebService.shared.postPlaylist(textField.text!) { (success) -> Void in
+        WebService.singleton.postPlaylist(textField.text!) { (success) -> Void in
             if success {
+                BLE.singleton.switchBroadcastingState()
                 self.navigationController?.popToRootViewControllerAnimated(true)
             }
         }

@@ -6,7 +6,8 @@
 //  Copyright © 2015 BamBox. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import SwiftyJSON
 
 class PlaylistManager {
     
@@ -24,5 +25,9 @@ class PlaylistManager {
     
     func removePlaylist(playlist:Playlist) {
         // come back to this one
+    }
+    
+    func playlistAtIndex(index:Int) -> Playlist {
+        return playlistsArray[index]
     }
 }

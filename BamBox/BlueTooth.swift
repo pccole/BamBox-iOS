@@ -9,11 +9,11 @@
 import Foundation
 import CoreBluetooth
 
-public class BLE:NSObject, CBPeripheralManagerDelegate, CBCentralManagerDelegate {
+public class BLE:NSObject, CBPeripheralManagerDelegate, CBCentralManagerDelegate, CBPeripheralDelegate {
     
     static let singleton = BLE()
     
-    let uuid = NSUUID(UUIDString: "3AC92751-8ADE-4DEB-B133-7774E3EE2BFE")
+    let uuid = "3AC92751-8ADE-4DEB-B133-7774E3EE2BFE"
     
     var bluetoothPeripheralManager: CBPeripheralManager!
     var centralManager: CBCentralManager!
@@ -25,13 +25,29 @@ public class BLE:NSObject, CBPeripheralManagerDelegate, CBCentralManagerDelegate
                 
         bluetoothPeripheralManager = CBPeripheralManager(delegate: self, queue: dispatch_get_main_queue(), options:[:])
         centralManager = CBCentralManager(delegate: self, queue: dispatch_get_main_queue(), options:[:])
+        
     }
     
     func switchBroadcastingState() {
         if !isBroadcasting {
             if bluetoothPeripheralManager.state == CBPeripheralManagerState.PoweredOn {
                 isBroadcasting = true
-                dataDictionary = [CBAdvertisementDataLocalNameKey:"com.BamBox.BamBox2"]
+                
+                let myCustomServiceUUID = CBUUID(string: uuid)
+                
+                let playlist = PlaylistManager.singleton.playlistAtIndex(0)
+                let data = playlist.participant_token.dataUsingEncoding(NSUTF8StringEncoding)
+                
+                let myCharaterisic = CBMutableCharacteristic(type: myCustomServiceUUID,
+                    properties: CBCharacteristicProperties.Read, value: data, permissions: CBAttributePermissions.Readable)
+                
+                let myService = CBMutableService(type: myCustomServiceUUID, primary: true)
+                myService.characteristics = [myCharaterisic]
+                
+                dataDictionary = [CBAdvertisementDataLocalNameKey:playlist.owner_token,
+                    CBAdvertisementDataServiceUUIDsKey: [myService.UUID]]
+                
+                bluetoothPeripheralManager.addService(myService)
                 bluetoothPeripheralManager.startAdvertising(dataDictionary)
             }
         } else {

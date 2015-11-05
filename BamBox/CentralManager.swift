@@ -19,6 +19,15 @@ extension BLE {
         print(advertisementData)
         print(RSSI)
         print("central manager did discover")
+        if let uuid_array = advertisementData[CBAdvertisementDataServiceUUIDsKey] as? [CBUUID] {
+            if let cbuuid:CBUUID = uuid_array.first {
+                if String(cbuuid) == uuid {
+                    peripheral.delegate = self
+                }
+                
+                print(String(cbuuid))
+            }
+        }
     }
     
     public func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {

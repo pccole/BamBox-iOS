@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 public class Playlist {
     
@@ -18,15 +19,12 @@ public class Playlist {
     
     
     
-    convenience init(dictionary:[String:AnyObject]) {
+    convenience init(map:JSON) {
         self.init()
-        guard id = dictionary["id"] as! Int else {
-            
-        }
-        name = "hi"
-        owner_token = "hi"
-        participant_token = "hi"
-        song_plays_array = [String]()
+        id = map["id"].int!
+        name = map["name"].string
+        owner_token = map["owner_token"].string
+        participant_token = map["participant_token"].string
     }
     
 }

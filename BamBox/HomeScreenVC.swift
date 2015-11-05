@@ -18,8 +18,15 @@ class HomeScreenVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        bamBoxIV.userInteractionEnabled = true
+        let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "broadCast")
+        bamBoxIV.addGestureRecognizer(tap)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController?.navigationBar.hidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,14 +41,9 @@ class HomeScreenVC: UIViewController {
     @IBAction func scanPlaylistTapped(sender: AnyObject) {
         BLE.singleton.scan()
     }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func broadCast() {
+        BLE.singleton.switchBroadcastingState()
     }
-    */
 
 }
