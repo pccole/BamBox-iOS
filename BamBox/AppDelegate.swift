@@ -13,12 +13,12 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        let homeScreen = HomeScreenVC(nibName:nil, bundle:nil)
-        let navController = UINavigationController(rootViewController: homeScreen)
+        let loginScreen = LoginScreenVC(nibName:nil, bundle:nil)
+        let navController = UINavigationController(rootViewController: loginScreen)
         navController.navigationBar.hidden = true
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
@@ -26,7 +26,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = navController
         return true
     }
-
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        if SPTAuth.defaultInstance().canHandleURL(url) {
+            SPTAuth.defaultInstance().handleAuthCallbackWithTriggeredAuthURL(url, callback: { (error:NSError!, session:SPTSession!) -> Void in
+                if error != nil {
+                    print("Auth Error")
+                }
+                
+                let userDefaults = NSUserDefaults.standardUserDefaults()
+                userDefaults.setBool(true, forKey: "premiumPurchased")
+                
+                let sessionData = NSKeyedArchiver.archivedDataWithRootObject(session)
+                
+                userDefaults.setObject(sessionData, forKey: "SpotifySession")
+                
+                userDefaults.synchronize()
+                
+                
+                
+            })
+        }
+        return true
+    }
+    
+    
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

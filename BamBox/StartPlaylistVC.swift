@@ -25,7 +25,6 @@ class StartPlaylistVC: UIViewController, UITextFieldDelegate {
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-
     }
 
     override func didReceiveMemoryWarning() {

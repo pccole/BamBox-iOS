@@ -9,18 +9,18 @@
 import UIKit
 import SwiftyJSON
 
-class PlaylistManager {
+class PlaylistManager:PlaylistInterface {
     
     static let singleton = PlaylistManager()
     
-    private var playlistsArray = [Playlist]()
+    internal var playlistArray = [Playlist]()
     
     init() {
         
     }
     
     func addPlaylist(playlist:Playlist) {
-        playlistsArray.append(playlist)
+        playlistArray.append(playlist)
     }
     
     func removePlaylist(playlist:Playlist) {
@@ -28,6 +28,6 @@ class PlaylistManager {
     }
     
     func playlistAtIndex(index:Int) -> Playlist {
-        return playlistsArray[index]
+        return playlistArray[index]
     }
 }
