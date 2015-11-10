@@ -56,7 +56,7 @@ public class BLE:NSObject, CBPeripheralManagerDelegate, CBCentralManagerDelegate
         }
     }
     
-    func scan() {
+    func scan(foundDevice:(() -> Void)) {
         centralManager.scanForPeripheralsWithServices(nil, options: [:])
     }
 }

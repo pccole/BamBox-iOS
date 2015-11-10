@@ -10,18 +10,12 @@ import UIKit
 
 class LoginScreenVC: UIViewController {
 
-    @IBOutlet weak var credsView: UIView!
-    @IBOutlet weak var usernameTF: UITextField!
-    @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.usernameTF.text = "pccole10"
-        self.passwordTF.text = "Frogger1024@"
-        let tap = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
-        self.view.addGestureRecognizer(tap)
+
     }
 
     override func didReceiveMemoryWarning() {

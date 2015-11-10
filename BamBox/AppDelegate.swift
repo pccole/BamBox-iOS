@@ -13,22 +13,20 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
+    var navRouter:NavRouter?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        let loginScreen = LoginScreenVC(nibName:nil, bundle:nil)
-        let navController = UINavigationController(rootViewController: loginScreen)
-        navController.navigationBar.hidden = true
+        self.navRouter = NavRouter(nibName:nil, bundle: nil)
+        
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.makeKeyAndVisible()
-        window?.rootViewController = navController
+        window?.rootViewController = self.navRouter
         return true
     }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-        if SPTAuth.defaultInstance().canHandleURL(url) {
             SPTAuth.defaultInstance().handleAuthCallbackWithTriggeredAuthURL(url, callback: { (error:NSError!, session:SPTSession!) -> Void in
                 if error != nil {
                     print("Auth Error")
@@ -43,11 +41,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 userDefaults.synchronize()
                 
-                
-                
+                NavRouter.router().showHomeScreen()
             })
-        }
-        return true
+        return false
     }
     
     

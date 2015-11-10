@@ -26,7 +26,7 @@ class HomeScreenVC: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        self.navigationController?.navigationBar.hidden = true
+        self.navigationController?.navigationBarHidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,15 +35,15 @@ class HomeScreenVC: UIViewController {
     }
     
     @IBAction func startPlaylistTapped(sender: AnyObject) {
-        self.navigationController?.pushViewController(StartPlaylistVC(nibName:nil, bundle:nil), animated: true)
+        NavRouter.router().pushStartPlaylist()
     }
 
     @IBAction func scanPlaylistTapped(sender: AnyObject) {
-        BLE.singleton.scan()
+        NavRouter.router().showScanForPlaylist()
     }
 
     func broadCast() {
-        BLE.singleton.switchBroadcastingState()
+        NavRouter.router().pushBroadCastPlaylistVC()
     }
 
 }
