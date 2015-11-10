@@ -15,12 +15,36 @@ class PlaylistManager:PlaylistInterface {
     
     internal var playlistArray = [Playlist]()
     
+    var broadCastPlaylist = [Playlist]()
+    
     init() {
         
     }
     
+    func createPlaylistWithTitle(title:String, completion:(Bool) -> Void) {
+        WebService.singleton.postPlaylist(title) { (bool, json) -> Void in
+            if bool {
+                self.addPlaylist(Playlist(map: json!))
+                completion(true)
+            } else {
+                completion(false)
+            }
+        }
+    }
+    
+    func getPlaylistById(id:Int, completion:(Bool) -> Void) {
+        WebService.singleton.getPlaylist(id) { (bool, json) -> Void in
+            if bool {
+                self.broadCastPlaylist.append(Playlist(map: json!))
+                completion(true)
+            } else {
+                completion(false)
+            }
+        }
+    }
+    
     func addPlaylist(playlist:Playlist) {
-        playlistArray.append(playlist)
+        self.playlistArray.append(playlist)
     }
     
     func removePlaylist(playlist:Playlist) {
@@ -28,6 +52,10 @@ class PlaylistManager:PlaylistInterface {
     }
     
     func playlistAtIndex(index:Int) -> Playlist {
-        return playlistArray[index]
+        return self.playlistArray[index]
+    }
+    
+    func playlistCount() -> Int {
+        return self.playlistArray.count
     }
 }

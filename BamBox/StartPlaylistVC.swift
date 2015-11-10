@@ -33,10 +33,9 @@ class StartPlaylistVC: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        WebService.singleton.postPlaylist(textField.text!) { (success) -> Void in
-            if success {
-                BLE.singleton.switchBroadcastingState()
-                self.navigationController?.popToRootViewControllerAnimated(true)
+        PlaylistManager.singleton.createPlaylistWithTitle(textField.text!) { (bool) -> Void in
+            if bool {
+                NavRouter.router().popViewController(true)
             }
         }
         return true

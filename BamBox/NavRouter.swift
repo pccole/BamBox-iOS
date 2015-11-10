@@ -22,6 +22,9 @@ class NavRouter: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func popViewController(animated:Bool) {
+        self.masterNav.popToRootViewControllerAnimated(animated)
+    }
     
     func showLoginScreen() {
         let loginScreen = LoginScreenVC(nibName:nil, bundle:nil)
@@ -47,10 +50,16 @@ class NavRouter: UIViewController {
         self.masterNav.pushViewController(scanPlaylist, animated: true)
     }
     
-    func pushBroadCastPlaylistVC() {
+    func pushBroadCastPlaylistVC(playlist:Playlist) {
         let broadCastPlaylist = BroadCastPlaylistVC(nibName:nil, bundle:nil)
-        self.masterNav.navigationBarHidden = false
+        broadCastPlaylist.playlist = playlist
         self.masterNav.pushViewController(broadCastPlaylist, animated: true)
+    }
+    
+    func pushMyPlaylists() {
+        let myPlaylists = MyPlaylistsVC(nibName:nil, bundle:nil)
+        self.masterNav.navigationBarHidden = false
+        self.masterNav.pushViewController(myPlaylists, animated: true)
     }
     
     static func router() -> NavRouter {

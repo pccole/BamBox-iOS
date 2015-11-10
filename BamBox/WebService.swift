@@ -16,15 +16,23 @@ class WebService:NSObject {
     
     let baseURL: String = "http://be-util02.jrforrest.net:9292/api"
     
-    func postPlaylist(playlist:String, completion:(Bool) -> Void) {
+    func postPlaylist(playlist:String, completion:(Bool, JSON?) -> Void) {
         let params = ["name":playlist]
         Alamofire.request(.POST, "\(baseURL)/playlist", parameters:params).responseJSON { (request:NSURLRequest?, response:NSHTTPURLResponse?, result:Result<AnyObject>) -> Void in
-            
             if let json:JSON = JSON(result.value!) {
-                PlaylistManager.singleton.addPlaylist(Playlist(map: json))
-                completion(true)
+                completion(true, json)
             } else {
-                completion(false)
+                completion(false, nil)
+            }
+        }
+    }
+    
+    func getPlaylist(playlistID:Int, completion:(Bool, JSON?) -> Void) {
+        Alamofire.request(.GET, "\(baseURL)/playlist/\(playlistID)").responseJSON { (request:NSURLRequest?, response:NSHTTPURLResponse?, result:Result<AnyObject>) -> Void in
+            if let json:JSON = JSON(result.value!) {
+                completion(true, json)
+            } else {
+                completion(false, nil)
             }
         }
     }

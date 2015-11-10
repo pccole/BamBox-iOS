@@ -8,12 +8,17 @@
 
 import UIKit
 
-class MyPlaylistsVC: UIViewController {
+class MyPlaylistsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.title = "My Playlists"
+        
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.registerClass(PlaylistTableViewCell.self, forCellReuseIdentifier: PlaylistTableViewCell.kPlaylistID)
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,4 +26,30 @@ class MyPlaylistsVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+}
+
+
+// Mark - UITableViewDelegate
+
+extension MyPlaylistsVC {
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! PlaylistTableViewCell
+        cell.broadCastPlaylist()
+    }
+}
+
+// Mark - UITableViewDataSource
+
+extension MyPlaylistsVC {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return PlaylistManager.singleton.playlistCount()
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(PlaylistTableViewCell.kPlaylistID, forIndexPath: indexPath) as! PlaylistTableViewCell
+        let playlist = PlaylistManager.singleton.playlistAtIndex(indexPath.row)
+        cell.playlist = playlist
+        cell.textLabel?.text = playlist.name
+        return cell
+    }
 }

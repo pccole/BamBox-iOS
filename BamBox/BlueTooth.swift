@@ -20,6 +20,8 @@ public class BLE:NSObject, CBPeripheralManagerDelegate, CBCentralManagerDelegate
     var isBroadcasting = false
     var dataDictionary = [String:AnyObject]()
     
+    internal var foundDeviceCallBack:(() -> Void)!
+    
     override init() {
         super.init()
                 
@@ -28,35 +30,37 @@ public class BLE:NSObject, CBPeripheralManagerDelegate, CBCentralManagerDelegate
         
     }
     
-    func switchBroadcastingState() {
-        if !isBroadcasting {
-            if bluetoothPeripheralManager.state == CBPeripheralManagerState.PoweredOn {
-                isBroadcasting = true
-                
-                let myCustomServiceUUID = CBUUID(string: uuid)
-                
-                let playlist = PlaylistManager.singleton.playlistAtIndex(0)
-                let data = playlist.participant_token.dataUsingEncoding(NSUTF8StringEncoding)
-                
-                let myCharaterisic = CBMutableCharacteristic(type: myCustomServiceUUID,
-                    properties: CBCharacteristicProperties.Read, value: data, permissions: CBAttributePermissions.Readable)
-                
-                let myService = CBMutableService(type: myCustomServiceUUID, primary: true)
-                myService.characteristics = [myCharaterisic]
-                
-                dataDictionary = [CBAdvertisementDataLocalNameKey:playlist.owner_token,
-                    CBAdvertisementDataServiceUUIDsKey: [myService.UUID]]
-                
-                bluetoothPeripheralManager.addService(myService)
-                bluetoothPeripheralManager.startAdvertising(dataDictionary)
-            }
+    func broadCastPlaylist(playlist:Playlist) {
+        if bluetoothPeripheralManager.state == CBPeripheralManagerState.PoweredOn {
+            isBroadcasting = true
+            
+            let myCustomServiceUUID = CBUUID(string: uuid)
+            
+            let playlist = PlaylistManager.singleton.playlistAtIndex(0)
+            let data = playlist.participant_token.dataUsingEncoding(NSUTF8StringEncoding)
+            
+            let myCharaterisic = CBMutableCharacteristic(type: myCustomServiceUUID,
+                properties: CBCharacteristicProperties.Read, value: data, permissions: CBAttributePermissions.Readable)
+            
+            let myService = CBMutableService(type: myCustomServiceUUID, primary: true)
+            myService.characteristics = [myCharaterisic]
+            
+            dataDictionary = [CBAdvertisementDataLocalNameKey:"BamBox=\(playlist.id)",
+                CBAdvertisementDataServiceUUIDsKey: [myService.UUID]]
+            
+            bluetoothPeripheralManager.addService(myService)
+            bluetoothPeripheralManager.startAdvertising(dataDictionary)
         } else {
-            bluetoothPeripheralManager.stopAdvertising()
-            isBroadcasting = false
+            print("Bluetooth not powered on")
         }
     }
     
-    func scan(foundDevice:(() -> Void)) {
+    func stopBroadCasting() {
+        bluetoothPeripheralManager.stopAdvertising()
+    }
+    
+    func scan(foundDevice:(() -> Void)!) {
+        self.foundDeviceCallBack = foundDevice
         centralManager.scanForPeripheralsWithServices(nil, options: [:])
     }
 }

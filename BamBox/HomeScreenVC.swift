@@ -43,7 +43,6 @@ class HomeScreenVC: UIViewController {
     }
 
     func broadCast() {
-        NavRouter.router().pushBroadCastPlaylistVC()
-    }
+        NavRouter.router().pushMyPlaylists()    }
 
 }

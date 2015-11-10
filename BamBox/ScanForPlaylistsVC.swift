@@ -13,6 +13,9 @@ class ScanForPlaylistsVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        BLE.singleton.scan { () -> Void in
+            self.tableView.reloadData()
+        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -11,12 +11,11 @@ import UIKit
 class BroadCastPlaylistVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    var playlist:Playlist!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        BLE.singleton.scan { () -> Void in
-            self.tableView.reloadData()
-        }
+        self.title = playlist.name
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,3 +24,4 @@ class BroadCastPlaylistVC: UIViewController {
     }
     
 }
+
