@@ -4,9 +4,9 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BroadCastPlaylistVC" customModule="BamBox" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchSpotifyVC" customModule="BamBox" customModuleProvider="target">
             <connections>
-                <outlet property="tableView" destination="fvc-7Z-IHm" id="a7H-2j-zGw"/>
+                <outlet property="tableView" destination="Bt2-96-uog" id="ijX-kh-CZp"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fvc-7Z-IHm">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Bt2-96-uog">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <animations/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -24,10 +24,10 @@
             <animations/>
             <color key="backgroundColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="fvc-7Z-IHm" secondAttribute="bottom" id="Hhi-dv-qSd"/>
-                <constraint firstItem="fvc-7Z-IHm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="XcK-NK-xpJ"/>
-                <constraint firstAttribute="trailing" secondItem="fvc-7Z-IHm" secondAttribute="trailing" id="p6w-Sd-LHg"/>
-                <constraint firstItem="fvc-7Z-IHm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="pdM-wc-FGo"/>
+                <constraint firstAttribute="trailing" secondItem="Bt2-96-uog" secondAttribute="trailing" id="ChF-nk-CRa"/>
+                <constraint firstItem="Bt2-96-uog" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="FJt-P8-PaS"/>
+                <constraint firstItem="Bt2-96-uog" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="gpD-Vo-BC6"/>
+                <constraint firstAttribute="bottom" secondItem="Bt2-96-uog" secondAttribute="bottom" id="idI-3U-s7d"/>
             </constraints>
         </view>
     </objects>

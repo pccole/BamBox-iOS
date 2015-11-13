@@ -15,7 +15,7 @@ class PlaylistManager:PlaylistInterface {
     
     internal var playlistArray = [Playlist]()
     
-    var broadCastPlaylist = [Playlist]()
+    internal var broadCastPlaylist = [Playlist]()
     
     init() {
         
@@ -24,7 +24,9 @@ class PlaylistManager:PlaylistInterface {
     func createPlaylistWithTitle(title:String, completion:(Bool) -> Void) {
         WebService.singleton.postPlaylist(title) { (bool, json) -> Void in
             if bool {
-                self.addPlaylist(Playlist(map: json!))
+                let playlist = Playlist(map: json!)
+                self.addPlaylist(playlist)
+                NavRouter.router().pushPlaylistVC(playlist)
                 completion(true)
             } else {
                 completion(false)
@@ -57,5 +59,17 @@ class PlaylistManager:PlaylistInterface {
     
     func playlistCount() -> Int {
         return self.playlistArray.count
+    }
+    
+    func broadCastPlaylistCount() -> Int {
+        return self.broadCastPlaylist.count
+    }
+    
+    func addBroadCastPlaylist(playlist:Playlist) {
+        self.broadCastPlaylist.append(playlist)
+    }
+    
+    func broadCastPlaylistAtIndex(index:Int) -> Playlist {
+        return self.broadCastPlaylist[index]
     }
 }

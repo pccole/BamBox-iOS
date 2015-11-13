@@ -25,20 +25,11 @@ class MyPlaylistsVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
 }
 
 
 // Mark - UITableViewDelegate
-
-extension MyPlaylistsVC {
-    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! PlaylistTableViewCell
-        cell.broadCastPlaylist()
-    }
-}
-
-// Mark - UITableViewDataSource
 
 extension MyPlaylistsVC {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -51,5 +42,14 @@ extension MyPlaylistsVC {
         cell.playlist = playlist
         cell.textLabel?.text = playlist.name
         return cell
+    }
+}
+
+// Mark - UITableViewDataSource
+
+extension MyPlaylistsVC {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! PlaylistTableViewCell
+        cell.broadCastPlaylist()
     }
 }

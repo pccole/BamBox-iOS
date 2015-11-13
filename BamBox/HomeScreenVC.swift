@@ -39,10 +39,11 @@ class HomeScreenVC: UIViewController {
     }
 
     @IBAction func scanPlaylistTapped(sender: AnyObject) {
-        NavRouter.router().showScanForPlaylist()
+        NavRouter.router().pushScanForPlaylist()
     }
 
     func broadCast() {
-        NavRouter.router().pushMyPlaylists()    }
+        NavRouter.router().pushMyPlaylists()
+    }
 
 }

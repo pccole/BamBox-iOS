@@ -18,31 +18,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         self.navRouter = NavRouter(nibName:nil, bundle: nil)
-        
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.makeKeyAndVisible()
         window?.rootViewController = self.navRouter
+        
+        if let session = SpotifyService.singleton.spotifySession() {
+            if !session.isValid() {
+                SpotifyService.singleton.renewSpotifySession({ (bool) -> Void in
+                    if bool {
+                        self.navRouter?.showHomeScreen()
+                    } else {
+                        self.navRouter?.showLoginScreen()
+                    }
+                })
+            } else {
+                self.navRouter?.showHomeScreen()
+            }
+        } else {
+            self.navRouter?.showLoginScreen()
+        }
+        
         return true
     }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        if SPTAuth.defaultInstance().canHandleURL(NSURL(string:SpotifyService.singleton.kRedirectURLString)!) {
             SPTAuth.defaultInstance().handleAuthCallbackWithTriggeredAuthURL(url, callback: { (error:NSError!, session:SPTSession!) -> Void in
                 if error != nil {
                     print("Auth Error")
+                    return
                 }
-                
-                let userDefaults = NSUserDefaults.standardUserDefaults()
-                userDefaults.setBool(true, forKey: "premiumPurchased")
-                
-                let sessionData = NSKeyedArchiver.archivedDataWithRootObject(session)
-                
-                userDefaults.setObject(sessionData, forKey: "SpotifySession")
-                
-                userDefaults.synchronize()
-                
-                NavRouter.router().showHomeScreen()
+                SpotifyService.singleton.saveSpotifySession(session)
             })
+        }
         return false
     }
     

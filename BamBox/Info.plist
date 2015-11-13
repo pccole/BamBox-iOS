@@ -21,13 +21,15 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>BamBoxiOSApp</string>
-			</array>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
 			<key>CFBundleURLName</key>
 			<array>
 				<string>com.BamBox.BamBox</string>
+			</array>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>BamBoxiOSApp</string>
 			</array>
 		</dict>
 	</array>

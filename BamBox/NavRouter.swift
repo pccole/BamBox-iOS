@@ -11,10 +11,11 @@ import UIKit
 class NavRouter: UIViewController {
     
     let masterNav = UINavigationController()
+    
+    var topViewController:UIViewController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        showLoginScreen()
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,7 +36,14 @@ class NavRouter: UIViewController {
         let homeScreen = HomeScreenVC(nibName:nil, bundle:nil)
         self.masterNav.setViewControllers([homeScreen], animated: false)
         self.masterNav.navigationBarHidden = true
-        self.activateChildVC(self.masterNav, animated: true, completion: nil)
+        self.masterNav.navigationBar.backgroundColor = UIColor.clearColor()
+        if self.topViewController != nil {
+            self.deactivateChildVC(self.topViewController, animated: true) { () -> Void in
+                self.activateChildVC(self.masterNav, animated: true, completion: nil)
+            }
+        } else {
+            self.activateChildVC(self.masterNav, animated: true, completion: nil)
+        }
     }
     
     func pushStartPlaylist() {
@@ -44,22 +52,27 @@ class NavRouter: UIViewController {
         self.masterNav.pushViewController(playlistVC, animated: true)
     }
     
-    func showScanForPlaylist() {
+    func pushScanForPlaylist() {
         let scanPlaylist = ScanForPlaylistsVC(nibName:nil, bundle:nil)
         self.masterNav.navigationBarHidden = false
         self.masterNav.pushViewController(scanPlaylist, animated: true)
     }
     
-    func pushBroadCastPlaylistVC(playlist:Playlist) {
-        let broadCastPlaylist = BroadCastPlaylistVC(nibName:nil, bundle:nil)
-        broadCastPlaylist.playlist = playlist
-        self.masterNav.pushViewController(broadCastPlaylist, animated: true)
+    func pushPlaylistVC(playlist:Playlist) {
+        let playlistVC = PlaylistVC(nibName:nil, bundle:nil)
+        playlistVC.playlist = playlist
+        self.masterNav.pushViewController(playlistVC, animated: true)
     }
     
     func pushMyPlaylists() {
         let myPlaylists = MyPlaylistsVC(nibName:nil, bundle:nil)
         self.masterNav.navigationBarHidden = false
         self.masterNav.pushViewController(myPlaylists, animated: true)
+    }
+    
+    func pushSearchSpotify() {
+        let searchSpotify = SearchSpotifyVC(nibName:nil, bundle:nil)
+        self.masterNav.pushViewController(searchSpotify, animated: true)
     }
     
     static func router() -> NavRouter {
@@ -72,6 +85,7 @@ class NavRouter: UIViewController {
         childController.view.frame = view.frame
         view.addSubview(childController.view)
         childController.didMoveToParentViewController(self)
+        self.topViewController = childController
     }
     
     func activateChildVC(childVC:UIViewController, animated:Bool, completion:(() -> Void)?) {

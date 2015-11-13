@@ -13,20 +13,73 @@ import SwiftyJSON
 class SpotifyService:NSObject {
     static let singleton = SpotifyService()
     
-    private let kClientID = "7c04cbd6b7e946879649b5634f4f9beb"
-    private let kClientSecret = "74aa545683ec4f398dd88fdcb38a5a00"
-    private let kRedirectURLString = "BamBoxiOSApp://"
-    private let kTokenSwapURL = ""
-    private let kTokenRefreshServiecURL = ""
+    var kClientID:String {
+        get {
+            return "7c04cbd6b7e946879649b5634f4f9beb"
+        }
+    }
+    var kClientSecret:String {
+        get {
+            return "74aa545683ec4f398dd88fdcb38a5a00"
+        }
+    }
+    var kRedirectURLString:String {
+        get {
+            return "BamBoxiOSApp://"
+        }
+    }
+    var kTokenSwapURL:String {
+        get {
+            return "http://localhost:1234/swap"
+        }
+    }
+    var kTokenRefreshServiecURL:String {
+        get {
+            return "http://localhost:1234/refresh"
+        }
+    }
     
     override init () {
+        
     }
     
     func openSpotifyAuth() {
         SPTAuth.defaultInstance().clientID = self.kClientID
         SPTAuth.defaultInstance().redirectURL = NSURL(string: self.kRedirectURLString)
+        SPTAuth.defaultInstance().requestedScopes = [SPTAuthStreamingScope, SPTAuthPlaylistReadPrivateScope, SPTAuthPlaylistModifyPublicScope, SPTAuthPlaylistModifyPrivateScope, SPTAuthUserLibraryReadScope]
         UIApplication.sharedApplication().openURL(SPTAuth.defaultInstance().loginURL)
-        SPTAuth.loginURLForClientId(self.kClientID, withRedirectURL: NSURL(string: self.kRedirectURLString), scopes: [SPTAuthStreamingScope], responseType:"com.BamBox.BamBox")
     }
     
+    func saveSpotifySession(session:SPTSession) {
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        userDefaults.setBool(true, forKey: "premiumPurchased")
+        
+        let sessionData = NSKeyedArchiver.archivedDataWithRootObject(session)
+        
+        userDefaults.setObject(sessionData, forKey: "SpotifySession")
+        
+        userDefaults.synchronize()
+        
+        NavRouter.router().showHomeScreen()
+    }
+    
+    func spotifySession() -> SPTSession? {
+        if let sessionData:NSData = NSUserDefaults.standardUserDefaults().objectForKey("SpotifySession") as? NSData {
+            let session = NSKeyedUnarchiver.unarchiveObjectWithData(sessionData) as! SPTSession
+            return session
+        } else {
+            return nil
+        }
+    }
+    
+    func renewSpotifySession(complete:(bool:Bool) -> Void) {
+        SPTAuth.defaultInstance().renewSession(spotifySession()!) { (error:NSError!, session:SPTSession!) -> Void in
+            if error != nil {
+                self.saveSpotifySession(session)
+                complete(bool: true)
+            } else {
+                complete(bool: false)
+            }
+        }
+    }
 }

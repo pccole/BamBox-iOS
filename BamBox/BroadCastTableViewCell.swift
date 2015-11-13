@@ -1,19 +1,17 @@
 //
-//  PlaylistTableViewCell.swift
+//  BroadCastTableViewCell.swift
 //  BamBox
 //
-//  Created by Phil Cole on 11/10/15.
+//  Created by Phil Cole on 11/12/15.
 //  Copyright © 2015 BamBox. All rights reserved.
 //
 
 import UIKit
 
-class PlaylistTableViewCell: UITableViewCell {
-    
+class BroadCastTableViewCell: UITableViewCell {
+
     var playlist:Playlist!
     
-    static let kPlaylistID = "PlaylistTableViewCell"
-
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -29,8 +27,7 @@ class PlaylistTableViewCell: UITableViewCell {
         self.playlist = nil
     }
     
-    func broadCastPlaylist() {
-        BLE.singleton.broadCastPlaylist(self.playlist)
+    func pushToPlaylist() {
         NavRouter.router().pushPlaylistVC(self.playlist)
     }
 }

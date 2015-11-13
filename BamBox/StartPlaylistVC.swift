@@ -11,16 +11,17 @@ import UIKit
 class StartPlaylistVC: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var playlistTextField: UITextField!
+    @IBOutlet weak var newPlaylistTFView: UIView!
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.hidden = false
-        playlistTextField.delegate = self
-        playlistTextField.returnKeyType = UIReturnKeyType.Done
-        playlistTextField.textColor = UIColor.whiteColor()
-        playlistTextField.placeholder = "Enter Playlist Name"
+        self.playlistTextField.delegate = self
+        self.playlistTextField.returnKeyType = UIReturnKeyType.Done
+        self.playlistTextField.textColor = UIColor.whiteColor()
+        self.playlistTextField.placeholder = "Enter Playlist Name"
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -35,7 +36,7 @@ class StartPlaylistVC: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         PlaylistManager.singleton.createPlaylistWithTitle(textField.text!) { (bool) -> Void in
             if bool {
-                NavRouter.router().popViewController(true)
+                
             }
         }
         return true

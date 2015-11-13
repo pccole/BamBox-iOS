@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StartPlaylistVC" customModule="BamBox" customModuleProvider="target">
             <connections>
+                <outlet property="newPlaylistTFView" destination="VFE-RU-PgL" id="5lw-tM-vFV"/>
                 <outlet property="playlistTextField" destination="87n-J1-Ui4" id="N2o-Yx-Lu2"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

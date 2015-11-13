@@ -16,19 +16,11 @@ extension BLE {
     }
     
     public func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
-//        print(peripheral)
+
         print(advertisementData)
-//        print(RSSI)
+
         print("central manager did discover")
-//        if let uuid_array = advertisementData[CBAdvertisementDataServiceUUIDsKey] as? [CBUUID] {
-//            if let cbuuid:CBUUID = uuid_array.first {
-//                if String(cbuuid) == uuid {
-//                    peripheral.delegate = self
-//                }
-//                
-//                print(String(cbuuid))
-//            }
-//        }
+
         if let localName = advertisementData[CBAdvertisementDataLocalNameKey] as? String {
             if localName.containsString("BamBox") {
                 let values:[String] = localName.componentsSeparatedByString("=")

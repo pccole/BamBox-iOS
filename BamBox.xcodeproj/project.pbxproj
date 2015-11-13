@@ -14,6 +14,12 @@
 		940A0FE91BF1987800D987CB /* LoginScreenVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 940A0FE71BF1987800D987CB /* LoginScreenVC.xib */; };
 		940A0FEC1BF19BC700D987CB /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940A0FEB1BF19BC700D987CB /* Styles.swift */; };
 		940D95151BEB0C600017090A /* PlaylistInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940D95141BEB0C600017090A /* PlaylistInterface.swift */; };
+		943793F11BF4238F007EC196 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943793F01BF4238F007EC196 /* SearchController.swift */; };
+		943793F41BF4326C007EC196 /* SearchSpotifyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943793F21BF4326C007EC196 /* SearchSpotifyVC.swift */; };
+		943793F51BF4326C007EC196 /* SearchSpotifyVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 943793F31BF4326C007EC196 /* SearchSpotifyVC.xib */; };
+		943793FC1BF58640007EC196 /* BroadCastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943793FA1BF58640007EC196 /* BroadCastTableViewCell.swift */; };
+		943793FD1BF58640007EC196 /* BroadCastTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 943793FB1BF58640007EC196 /* BroadCastTableViewCell.xib */; };
+		943793FF1BF591C6007EC196 /* PlaylistVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 943793FE1BF591C6007EC196 /* PlaylistVC.xib */; };
 		9476261A1BF1A1A300BF6F8A /* SpotifyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947626191BF1A1A300BF6F8A /* SpotifyService.swift */; };
 		947626201BF1A33A00BF6F8A /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9476261F1BF1A33A00BF6F8A /* Spotify.framework */; };
 		947626241BF1B80F00BF6F8A /* NavRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947626221BF1B80F00BF6F8A /* NavRouter.swift */; };
@@ -21,8 +27,7 @@
 		947626291BF1BF6700BF6F8A /* MyPlaylistsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947626271BF1BF6700BF6F8A /* MyPlaylistsVC.xib */; };
 		9476262C1BF1C31100BF6F8A /* ScanForPlaylistsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9476262A1BF1C31100BF6F8A /* ScanForPlaylistsVC.swift */; };
 		9476262D1BF1C31100BF6F8A /* ScanForPlaylistsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9476262B1BF1C31100BF6F8A /* ScanForPlaylistsVC.xib */; };
-		947626321BF1C4AA00BF6F8A /* BroadCastPlaylistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947626301BF1C4AA00BF6F8A /* BroadCastPlaylistVC.swift */; };
-		947626331BF1C4AA00BF6F8A /* BroadCastPlaylistVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947626311BF1C4AA00BF6F8A /* BroadCastPlaylistVC.xib */; };
+		947626321BF1C4AA00BF6F8A /* PlaylistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947626301BF1C4AA00BF6F8A /* PlaylistVC.swift */; };
 		9476263B1BF1D1EF00BF6F8A /* PlaylistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947626391BF1D1EF00BF6F8A /* PlaylistTableViewCell.swift */; };
 		9476263C1BF1D1EF00BF6F8A /* PlaylistTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9476263A1BF1D1EF00BF6F8A /* PlaylistTableViewCell.xib */; };
 		9476263E1BF1D24600BF6F8A /* MyPlaylistsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9476263D1BF1D24600BF6F8A /* MyPlaylistsVC.swift */; };
@@ -69,6 +74,12 @@
 		940A0FE71BF1987800D987CB /* LoginScreenVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginScreenVC.xib; sourceTree = "<group>"; };
 		940A0FEB1BF19BC700D987CB /* Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		940D95141BEB0C600017090A /* PlaylistInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistInterface.swift; sourceTree = "<group>"; };
+		943793F01BF4238F007EC196 /* SearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		943793F21BF4326C007EC196 /* SearchSpotifyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchSpotifyVC.swift; sourceTree = "<group>"; };
+		943793F31BF4326C007EC196 /* SearchSpotifyVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchSpotifyVC.xib; sourceTree = "<group>"; };
+		943793FA1BF58640007EC196 /* BroadCastTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BroadCastTableViewCell.swift; sourceTree = "<group>"; };
+		943793FB1BF58640007EC196 /* BroadCastTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BroadCastTableViewCell.xib; sourceTree = "<group>"; };
+		943793FE1BF591C6007EC196 /* PlaylistVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaylistVC.xib; sourceTree = "<group>"; };
 		947626191BF1A1A300BF6F8A /* SpotifyService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyService.swift; sourceTree = "<group>"; };
 		9476261B1BF1A1ED00BF6F8A /* BamBox-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BamBox-Bridging-Header.h"; sourceTree = "<group>"; };
 		9476261F1BF1A33A00BF6F8A /* Spotify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Spotify.framework; sourceTree = "<group>"; };
@@ -77,8 +88,7 @@
 		947626271BF1BF6700BF6F8A /* MyPlaylistsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyPlaylistsVC.xib; sourceTree = "<group>"; };
 		9476262A1BF1C31100BF6F8A /* ScanForPlaylistsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanForPlaylistsVC.swift; sourceTree = "<group>"; };
 		9476262B1BF1C31100BF6F8A /* ScanForPlaylistsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScanForPlaylistsVC.xib; sourceTree = "<group>"; };
-		947626301BF1C4AA00BF6F8A /* BroadCastPlaylistVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BroadCastPlaylistVC.swift; sourceTree = "<group>"; };
-		947626311BF1C4AA00BF6F8A /* BroadCastPlaylistVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BroadCastPlaylistVC.xib; sourceTree = "<group>"; };
+		947626301BF1C4AA00BF6F8A /* PlaylistVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistVC.swift; sourceTree = "<group>"; };
 		947626391BF1D1EF00BF6F8A /* PlaylistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistTableViewCell.swift; sourceTree = "<group>"; };
 		9476263A1BF1D1EF00BF6F8A /* PlaylistTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaylistTableViewCell.xib; sourceTree = "<group>"; };
 		9476263D1BF1D24600BF6F8A /* MyPlaylistsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPlaylistsVC.swift; sourceTree = "<group>"; };
@@ -160,7 +170,6 @@
 			isa = PBXGroup;
 			children = (
 				9476261B1BF1A1ED00BF6F8A /* BamBox-Bridging-Header.h */,
-				94CD49B21BAE4A41000E0F62 /* AppDelegate.swift */,
 				940A0FEB1BF19BC700D987CB /* Styles.swift */,
 				94CD49BC1BAE4A41000E0F62 /* Assets.xcassets */,
 				94CD49BE1BAE4A41000E0F62 /* LaunchScreen.storyboard */,
@@ -171,16 +180,25 @@
 			name = "Support Files";
 			sourceTree = "<group>";
 		};
+		943793EF1BF42313007EC196 /* Helper Classes */ = {
+			isa = PBXGroup;
+			children = (
+				943793F01BF4238F007EC196 /* SearchController.swift */,
+			);
+			name = "Helper Classes";
+			sourceTree = "<group>";
+		};
 		947626351BF1D18500BF6F8A /* UIViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				947626231BF1B80F00BF6F8A /* NavRouter.xib */,
 				94DCABB11BC88F45006CB022 /* HomeScreenVC.xib */,
-				94DCABB71BC89E94006CB022 /* StartPlaylistVC.xib */,
 				940A0FE71BF1987800D987CB /* LoginScreenVC.xib */,
 				947626271BF1BF6700BF6F8A /* MyPlaylistsVC.xib */,
 				9476262B1BF1C31100BF6F8A /* ScanForPlaylistsVC.xib */,
-				947626311BF1C4AA00BF6F8A /* BroadCastPlaylistVC.xib */,
+				94DCABB71BC89E94006CB022 /* StartPlaylistVC.xib */,
+				943793FE1BF591C6007EC196 /* PlaylistVC.xib */,
+				943793F31BF4326C007EC196 /* SearchSpotifyVC.xib */,
 			);
 			name = UIViewControllers;
 			sourceTree = "<group>";
@@ -189,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				9476263A1BF1D1EF00BF6F8A /* PlaylistTableViewCell.xib */,
+				943793FB1BF58640007EC196 /* BroadCastTableViewCell.xib */,
 			);
 			name = UITableViewCells;
 			sourceTree = "<group>";
@@ -202,7 +221,8 @@
 				94DCABB61BC89E94006CB022 /* StartPlaylistVC.swift */,
 				9476263D1BF1D24600BF6F8A /* MyPlaylistsVC.swift */,
 				9476262A1BF1C31100BF6F8A /* ScanForPlaylistsVC.swift */,
-				947626301BF1C4AA00BF6F8A /* BroadCastPlaylistVC.swift */,
+				947626301BF1C4AA00BF6F8A /* PlaylistVC.swift */,
+				943793F21BF4326C007EC196 /* SearchSpotifyVC.swift */,
 			);
 			name = UIViewControllers;
 			sourceTree = "<group>";
@@ -211,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				947626391BF1D1EF00BF6F8A /* PlaylistTableViewCell.swift */,
+				943793FA1BF58640007EC196 /* BroadCastTableViewCell.swift */,
 			);
 			name = UITableViewCells;
 			sourceTree = "<group>";
@@ -250,9 +271,11 @@
 		94CD49B11BAE4A41000E0F62 /* BamBox */ = {
 			isa = PBXGroup;
 			children = (
+				94CD49B21BAE4A41000E0F62 /* AppDelegate.swift */,
 				94BFC5A21BD0A0D700E8A95F /* BLE */,
 				94CD49E31BAE4A82000E0F62 /* WebService */,
 				94DCABBC1BD08BF4006CB022 /* Data Handler */,
+				943793EF1BF42313007EC196 /* Helper Classes */,
 				94DCABB51BC88F5F006CB022 /* Models */,
 				94DCABB41BC88F4E006CB022 /* Views */,
 				94DCABAF1BC88F18006CB022 /* Controllers */,
@@ -437,12 +460,14 @@
 			files = (
 				947626251BF1B80F00BF6F8A /* NavRouter.xib in Resources */,
 				9476262D1BF1C31100BF6F8A /* ScanForPlaylistsVC.xib in Resources */,
+				943793FF1BF591C6007EC196 /* PlaylistVC.xib in Resources */,
 				94CD49C01BAE4A41000E0F62 /* LaunchScreen.storyboard in Resources */,
 				947626291BF1BF6700BF6F8A /* MyPlaylistsVC.xib in Resources */,
+				943793F51BF4326C007EC196 /* SearchSpotifyVC.xib in Resources */,
 				94DCABB91BC89E94006CB022 /* StartPlaylistVC.xib in Resources */,
 				940A0FE91BF1987800D987CB /* LoginScreenVC.xib in Resources */,
-				947626331BF1C4AA00BF6F8A /* BroadCastPlaylistVC.xib in Resources */,
 				94DCABB31BC88F45006CB022 /* HomeScreenVC.xib in Resources */,
+				943793FD1BF58640007EC196 /* BroadCastTableViewCell.xib in Resources */,
 				94CD49BD1BAE4A41000E0F62 /* Assets.xcassets in Resources */,
 				9476263C1BF1D1EF00BF6F8A /* PlaylistTableViewCell.xib in Resources */,
 			);
@@ -596,15 +621,18 @@
 				94CD49E51BAE4BC5000E0F62 /* WebService.swift in Sources */,
 				9476263B1BF1D1EF00BF6F8A /* PlaylistTableViewCell.swift in Sources */,
 				940A0FEC1BF19BC700D987CB /* Styles.swift in Sources */,
-				947626321BF1C4AA00BF6F8A /* BroadCastPlaylistVC.swift in Sources */,
+				947626321BF1C4AA00BF6F8A /* PlaylistVC.swift in Sources */,
 				94CD49BB1BAE4A41000E0F62 /* BamBox.xcdatamodeld in Sources */,
 				9476261A1BF1A1A300BF6F8A /* SpotifyService.swift in Sources */,
 				94DCABB81BC89E94006CB022 /* StartPlaylistVC.swift in Sources */,
 				94CD49B31BAE4A41000E0F62 /* AppDelegate.swift in Sources */,
 				947626241BF1B80F00BF6F8A /* NavRouter.swift in Sources */,
 				94DCABBE1BD08D12006CB022 /* PlaylistManager.swift in Sources */,
+				943793F11BF4238F007EC196 /* SearchController.swift in Sources */,
 				94BFC5A81BD0B0B200E8A95F /* PeripheralManager.swift in Sources */,
+				943793FC1BF58640007EC196 /* BroadCastTableViewCell.swift in Sources */,
 				9476262C1BF1C31100BF6F8A /* ScanForPlaylistsVC.swift in Sources */,
+				943793F41BF4326C007EC196 /* SearchSpotifyVC.swift in Sources */,
 				9476263E1BF1D24600BF6F8A /* MyPlaylistsVC.swift in Sources */,
 				94BFC5A41BD0A14900E8A95F /* BlueTooth.swift in Sources */,
 				94DCABB21BC88F45006CB022 /* HomeScreenVC.swift in Sources */,
