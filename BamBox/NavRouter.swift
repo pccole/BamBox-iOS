@@ -24,7 +24,7 @@ class NavRouter: UIViewController {
     }
     
     func popViewController(animated:Bool) {
-        self.masterNav.popToRootViewControllerAnimated(animated)
+        self.masterNav.popViewControllerAnimated(true)
     }
     
     func showLoginScreen() {
@@ -36,6 +36,7 @@ class NavRouter: UIViewController {
         let homeScreen = HomeScreenVC(nibName:nil, bundle:nil)
         self.masterNav.setViewControllers([homeScreen], animated: false)
         self.masterNav.navigationBarHidden = true
+        self.masterNav.navigationBar.translucent = false
         self.masterNav.navigationBar.backgroundColor = UIColor.clearColor()
         if self.topViewController != nil {
             self.deactivateChildVC(self.topViewController, animated: true) { () -> Void in
@@ -70,8 +71,9 @@ class NavRouter: UIViewController {
         self.masterNav.pushViewController(myPlaylists, animated: true)
     }
     
-    func pushSearchSpotify() {
+    func pushSearchSpotify(playlist:Playlist) {
         let searchSpotify = SearchSpotifyVC(nibName:nil, bundle:nil)
+        searchSpotify.playlist = playlist
         self.masterNav.pushViewController(searchSpotify, animated: true)
     }
     

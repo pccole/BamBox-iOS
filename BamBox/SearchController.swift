@@ -19,14 +19,16 @@ class SearchController: NSObject, UISearchControllerDelegate, UISearchResultsUpd
     var searchBarContainer:UIView!
     var embeddedViewController:UIViewController!
     let cellId:String = "Cell"
-
+    var trackArray:[SPTPartialTrack] = [SPTPartialTrack]()
+    var playlist:Playlist!
     override init() {
         super.init()
     }
     
     
-    init(searchBarContainerView:UIView, viewController:UIViewController) {
+    init(searchBarContainerView:UIView, viewController:UIViewController, playlist:Playlist) {
         super.init()
+        self.playlist = playlist
         embeddedViewController = viewController
         searchBarContainer = searchBarContainerView
         // Setup the table View
@@ -85,16 +87,18 @@ class SearchController: NSObject, UISearchControllerDelegate, UISearchResultsUpd
 // MARK: - TableViewDataSource
 extension SearchController {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchResults.count
+        return self.trackArray.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if searchResults.count == 0 {
+        if self.trackArray.count == 0 {
             let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellId, forIndexPath: indexPath)
             cell.textLabel?.text = "No Results"
             return cell
         } else {
             let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellId, forIndexPath: indexPath)
+            let partialTrack = self.trackArray[indexPath.row]
+            cell.textLabel?.text = partialTrack.name
             return cell
         }
     }
@@ -103,7 +107,8 @@ extension SearchController {
 // MARK: - TableViewDelegate
 extension SearchController {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        self.playlist.spotifyArray.append(self.trackArray[indexPath.row])
+        NavRouter.router().popViewController(true)
     }
 }
 // MARK: - UISearchResultsDelegate
@@ -114,7 +119,10 @@ extension SearchController {
     We will update this at a later time
     */
     func updateSearchResultsForSearchController(searchController: UISearchController) {
-        
+        SpotifyService.singleton.searchSpotifyLibrary(searchController.searchBar.text!) { (results:[SPTPartialTrack]) -> Void in
+            self.trackArray = results
+            self.searchResultsTableview.reloadData()
+        }
     }
 }
 

@@ -34,7 +34,7 @@ class PlaylistVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func pushSearchSpotifyVC() {
-        NavRouter.router().pushSearchSpotify()
+        NavRouter.router().pushSearchSpotify(self.playlist)
     }
     
     func playMusicUsingSession(session:SPTSession) {

@@ -82,4 +82,17 @@ class SpotifyService:NSObject {
             }
         }
     }
+    
+    func searchSpotifyLibrary(searchQuery:String, completion:([SPTPartialTrack]) -> Void) {
+        if let session = spotifySession() {
+            SPTSearch.performSearchWithQuery(searchQuery, queryType: SPTSearchQueryType.QueryTypeTrack, accessToken: session.accessToken, callback: { (error:NSError!, result:AnyObject!) -> Void in
+                print(result)
+                let listPage = result as! SPTListPage
+                if let items = listPage.items as? [SPTPartialTrack]{
+                    print(items)
+                    completion(items)
+                }
+            })
+        }
+    }
 }

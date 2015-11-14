@@ -16,7 +16,7 @@ public class Playlist {
     var owner_token:String!
     var participant_token:String!
     var song_plays:[String]!
-    
+    var spotifyArray:[SPTPartialTrack] = [SPTPartialTrack]()
     
     
     convenience init(map:JSON) {

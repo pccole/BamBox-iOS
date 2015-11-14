@@ -10,15 +10,18 @@ import UIKit
 
 class SearchSpotifyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet internal weak var tableView: UITableView!
+    @IBOutlet weak var searchBarView: UIView!
     
-    var searchResultsController:UITableViewController!
-    var searchController:UISearchController!
+    var searchController:SearchController!
+    var playlist:Playlist!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        self.searchController = SearchController(searchBarContainerView: self.searchBarView, viewController: self, playlist: self.playlist)
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,18 +44,5 @@ extension SearchSpotifyVC {
 
 // MARK: - TableViewDelegate
 extension SearchSpotifyVC {
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        self.searchResultsController = UITableViewController(style: UITableViewStyle.Plain)
-        self.searchResultsController.tableView.delegate = self
-        self.searchResultsController.tableView.dataSource = self
-        searchController = UISearchController(searchResultsController: searchResultsController)
-//        searchController.delegate = self
-//        searchController.searchResultsUpdater = self
-//        searchController.searchBar.delegate = self
 
-        searchController.searchBar.sizeToFit()
-        
-        return searchController.searchBar
-    }
 }
