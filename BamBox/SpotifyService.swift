@@ -13,6 +13,9 @@ import SwiftyJSON
 class SpotifyService:NSObject {
     static let singleton = SpotifyService()
     
+    var playlist:Playlist!
+    var player:SPTAudioStreamingController!
+    
     var kClientID:String {
         get {
             return "7c04cbd6b7e946879649b5634f4f9beb"
@@ -95,4 +98,31 @@ class SpotifyService:NSObject {
             })
         }
     }
+    func playMusicUsingTrack(track:SPTPartialTrack) {
+        if self.player == nil {
+            self.player = SPTAudioStreamingController(clientId: SpotifyService.singleton.kClientID)
+        }
+        if let session = SpotifyService.singleton.spotifySession() {
+            
+            if self.player.loggedIn {
+                print("logged in")
+                SPTTrack.trackWithURI(track.uri, session: session, callback: { (error:NSError!, result:AnyObject!) -> Void in
+                    let track = result as! SPTTrack
+                    self.player.playURIs([track.uri], withOptions: SPTPlayOptions(), callback: nil)
+                })
+            } else {
+                self.player.loginWithSession(session) { (error:NSError!) -> Void in
+                    if error != nil {
+                        print("error logging in \(error.localizedDescription)")
+                    }
+                    SPTTrack.trackWithURI(track.uri, session: session, callback: { (error:NSError!, result:AnyObject!) -> Void in
+                        let track = result as! SPTTrack
+                        self.player.playURIs([track.uri], withOptions: SPTPlayOptions(), callback: nil)
+                    })
+                    
+                }
+            }
+        }
+    }
+
 }
