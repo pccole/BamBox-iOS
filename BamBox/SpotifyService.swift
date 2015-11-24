@@ -76,7 +76,7 @@ class SpotifyService:NSObject {
     }
     
     func renewSpotifySession(complete:(bool:Bool) -> Void) {
-        SPTAuth.defaultInstance().renewSession(spotifySession()!) { (error:NSError!, session:SPTSession!) -> Void in
+        SPTAuth.defaultInstance().renewSession(spotifySession()) { (error:NSError!, session:SPTSession!) -> Void in
             if error != nil {
                 self.saveSpotifySession(session)
                 complete(bool: true)

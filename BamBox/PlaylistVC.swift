@@ -49,12 +49,12 @@ class PlaylistVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
 extension PlaylistVC {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.playlist.spotifyArray.count
+        return self.playlist.spotifyTrackCount()
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-        let partialTrack = self.playlist.spotifyArray[indexPath.row]
+        let partialTrack = self.playlist.spotifyTrackAtIndex(indexPath.row)
         cell.textLabel?.text = partialTrack.name
         return cell
     }
@@ -62,6 +62,6 @@ extension PlaylistVC {
 
 extension PlaylistVC {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        SpotifyService.singleton.playMusicUsingTrack(self.playlist.spotifyArray[indexPath.row])
+        SpotifyService.singleton.playMusicUsingTrack(self.playlist.spotifyTrackAtIndex(indexPath.row))
     }
 }

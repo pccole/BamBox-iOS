@@ -37,7 +37,7 @@ public class BLE:NSObject, CBPeripheralManagerDelegate, CBCentralManagerDelegate
             let myCustomServiceUUID = CBUUID(string: uuid)
             
             let playlist = PlaylistManager.singleton.playlistAtIndex(0)
-            let data = playlist.participant_token.dataUsingEncoding(NSUTF8StringEncoding)
+            let data = playlist.participantToken().dataUsingEncoding(NSUTF8StringEncoding)
             
             let myCharaterisic = CBMutableCharacteristic(type: myCustomServiceUUID,
                 properties: CBCharacteristicProperties.Read, value: data, permissions: CBAttributePermissions.Readable)

@@ -15,7 +15,8 @@ class WebService:NSObject {
     static let singleton = WebService()
     
     let baseURL: String = "http://be-util02.jrforrest.net:9292/api"
-    
+
+//        let baseURL: String = "http://192.168.1.115/api"
     func postPlaylist(playlist:String, completion:(Bool, JSON?) -> Void) {
         let params = ["name":playlist]
         Alamofire.request(.POST, "\(baseURL)/playlist", parameters:params).responseJSON { (request:NSURLRequest?, response:NSHTTPURLResponse?, result:Result<AnyObject>) -> Void in
@@ -34,6 +35,20 @@ class WebService:NSObject {
             } else {
                 completion(false, nil)
             }
+        }
+    }
+    
+    func postSong(songURI:String, playlist:Playlist, completion:(Bool) -> Void) {
+        let params = ["song_spotify_id":songURI]
+        Alamofire.request(.POST, "\(baseURL)/playlist/\(playlist.id)/song)", parameters: params).responseJSON { (request:NSURLRequest?, response:NSHTTPURLResponse?, result:Result<AnyObject>) -> Void in
+
+                if let json:JSON = JSON((result.value!)) {
+                    print(json)
+                    completion(true)
+                } else {
+                    completion(false)
+                }
+
         }
     }
     

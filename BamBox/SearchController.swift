@@ -9,7 +9,7 @@
 import UIKit
 
 class SearchController: NSObject, UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate {
-
+    
     var searchResults:[AnyObject] = []
     var containerView:UIView!
     var searchResultsTableview:UITableView!
@@ -68,7 +68,6 @@ class SearchController: NSObject, UISearchControllerDelegate, UISearchResultsUpd
         searchBarContainerView.addSubview(searchController.searchBar)
         
         // Turn off autoresizing mask so we can apply contraints manually
-        searchBarContainerView.translatesAutoresizingMaskIntoConstraints = false
         searchController.searchBar.translatesAutoresizingMaskIntoConstraints = false
         
         // Add the search bar to a dictionary to apply constraints
@@ -107,8 +106,11 @@ extension SearchController {
 // MARK: - TableViewDelegate
 extension SearchController {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.playlist.spotifyArray.append(self.trackArray[indexPath.row])
-        NavRouter.router().popViewController(true)
+        self.playlist.addTrackToPlaylist(self.trackArray[indexPath.row], completion: { (bool) -> Void in
+            if bool {
+                NavRouter.router().popViewController(true)
+            }
+        })
     }
 }
 // MARK: - UISearchResultsDelegate
@@ -129,13 +131,13 @@ extension SearchController {
 extension SearchController {
     
     
-//    Need to turn back on autoresizing mask to let the OS handle the transition effects
+    //    Need to turn back on autoresizing mask to let the OS handle the transition effects
     func willPresentSearchController(searchController: UISearchController) {
         searchController.searchBar.translatesAutoresizingMaskIntoConstraints = true
         searchBarContainer.removeConstraints(searchBarConstraints)
     }
     
-//    Turn autoresizing mask off so we can apply constraints
+    //    Turn autoresizing mask off so we can apply constraints
     func didDismissSearchController(searchController: UISearchController) {
         searchController.searchBar.translatesAutoresizingMaskIntoConstraints = false
         searchBarContainer.addConstraints(searchBarConstraints)
