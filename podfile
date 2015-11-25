@@ -5,6 +5,7 @@ link_with 'BamBox','BamBoxTests','BamBoxUITests'
 
 pod 'Alamofire'
 pod 'SwiftyJSON'
+pod 'AFNetworking'
 
 use_frameworks!
 
