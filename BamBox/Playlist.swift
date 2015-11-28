@@ -29,7 +29,7 @@ public class Playlist {
     }
     
     func addTrackToPlaylist(track:SPTPartialTrack, completion:(Bool) -> Void) {
-        WebService.singleton.postSong(track.uri.absoluteString, playlist: self) { (bool) -> Void in
+        WebService.singleton.postSong(track, playlist: self) { (bool) -> Void in
             if bool {
                 self.spotifyTrackArray.append(track)
                 completion(true)

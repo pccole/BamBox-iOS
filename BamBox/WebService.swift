@@ -18,39 +18,36 @@ class WebService:NSObject {
 
     func postPlaylist(playlist:String, completion:(Bool, JSON?) -> Void) {
         let params = ["name":playlist]
-        Alamofire.request(.POST, "\(baseURL)/playlist", parameters: params).response { (request:NSURLRequest?, response:NSHTTPURLResponse?, data:NSData?, error:NSError?) -> Void in
-            if let json:JSON = JSON(data: data!) {
-                print(json)
-                print(JSON(data: request!.HTTPBody!))
-                completion(true, json)
-            } else {
+        Alamofire.request(.POST, "\(baseURL)/playlist", parameters: params).responseJSON { (response) -> Void in
+            if response.result.isFailure {
                 completion(false, nil)
+            } else {
+                let json = JSON(response.result.value!)
+                completion(true, json)
             }
         }
     }
     
     func getPlaylist(playlistID:Int, completion:(Bool, JSON?) -> Void) {
-        Alamofire.request(.GET, "\(baseURL)/playlist/\(playlistID)").response { (request:NSURLRequest?, response:NSHTTPURLResponse?, data:NSData?, error:NSError?) -> Void in
-            if let json:JSON = JSON(data: data!) {
-                print(json)
-                completion(true, json)
-            } else {
+        Alamofire.request(.GET, "\(baseURL)/playlist/\(playlistID)").responseJSON(completionHandler: { (response) -> Void in
+            if response.result.isFailure {
                 completion(false, nil)
-            }
-        }
-    }
-    
-    func postSong(songURI:String, playlist:Playlist, completion:(Bool) -> Void) {
-        let params = ["song_spotify_id":songURI]
-        Alamofire.request(.POST, "\(baseURL)/playlist/\(playlist.id)/song)", parameters: params).response { (request:NSURLRequest?, response:NSHTTPURLResponse?, data:NSData?, error:NSError?) -> Void in
-            
-            if let json:JSON = JSON(data: data!) where error == nil {
-                print(json)
-                completion(true)
             } else {
-                completion(false)
+                let json = JSON(response.result.value!)
+                completion(true, json)
             }
-        }
+        })
     }
     
+    func postSong(song:SPTPartialTrack, playlist:Playlist, completion:(Bool) -> Void) {
+        let params = ["song_spotify_id":song.identifier]
+        Alamofire.request(.POST, "\(baseURL)/playlist/\(playlist.id)/song)", parameters: params).responseJSON(completionHandler: { (response) -> Void in
+            if response.result.isFailure {
+                print(response.result.error?.localizedDescription)
+                completion(false)
+            } else {
+                completion(true)
+            }
+        })
+    }
 }
