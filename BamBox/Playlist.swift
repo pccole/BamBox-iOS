@@ -27,14 +27,16 @@ public class Playlist {
     }
     
     func addTrackToPlaylist(track:SPTPartialTrack, completion:(Bool) -> Void) {
-        WebService.singleton.postSong(track, playlist: self) { (bool) -> Void in
-            if bool {
-                self.spotifyTrackArray.append(track)
-                completion(true)
-            } else {
-                completion(false)
-            }
-        }
+        self.spotifyTrackArray.append(track)
+        completion(true)
+//        WebService.singleton.postSong(track, playlist: self) { (bool) -> Void in
+//            if bool {
+//                self.spotifyTrackArray.append(track)
+//                completion(true)
+//            } else {
+//                completion(false)
+//            }
+//        }
     }
     
     func spotifyTrackAtIndex(index:Int) -> SPTPartialTrack {

@@ -31,6 +31,7 @@
 		9476263B1BF1D1EF00BF6F8A /* PlaylistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947626391BF1D1EF00BF6F8A /* PlaylistTableViewCell.swift */; };
 		9476263C1BF1D1EF00BF6F8A /* PlaylistTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9476263A1BF1D1EF00BF6F8A /* PlaylistTableViewCell.xib */; };
 		9476263E1BF1D24600BF6F8A /* MyPlaylistsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9476263D1BF1D24600BF6F8A /* MyPlaylistsVC.swift */; };
+		949D48771C19096800B6B13F /* NavIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949D48761C19096800B6B13F /* NavIcons.swift */; };
 		94BFC5A41BD0A14900E8A95F /* BlueTooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BFC5A31BD0A14900E8A95F /* BlueTooth.swift */; };
 		94BFC5A61BD0B06400E8A95F /* CentralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BFC5A51BD0B06400E8A95F /* CentralManager.swift */; };
 		94BFC5A81BD0B0B200E8A95F /* PeripheralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BFC5A71BD0B0B200E8A95F /* PeripheralManager.swift */; };
@@ -92,6 +93,7 @@
 		947626391BF1D1EF00BF6F8A /* PlaylistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistTableViewCell.swift; sourceTree = "<group>"; };
 		9476263A1BF1D1EF00BF6F8A /* PlaylistTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaylistTableViewCell.xib; sourceTree = "<group>"; };
 		9476263D1BF1D24600BF6F8A /* MyPlaylistsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPlaylistsVC.swift; sourceTree = "<group>"; };
+		949D48761C19096800B6B13F /* NavIcons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavIcons.swift; sourceTree = "<group>"; };
 		94BFC5A31BD0A14900E8A95F /* BlueTooth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueTooth.swift; sourceTree = "<group>"; };
 		94BFC5A51BD0B06400E8A95F /* CentralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CentralManager.swift; sourceTree = "<group>"; };
 		94BFC5A71BD0B0B200E8A95F /* PeripheralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralManager.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				943793F01BF4238F007EC196 /* SearchController.swift */,
+				949D48761C19096800B6B13F /* NavIcons.swift */,
 			);
 			name = "Helper Classes";
 			sourceTree = "<group>";
@@ -623,6 +626,7 @@
 				940A0FEC1BF19BC700D987CB /* Styles.swift in Sources */,
 				947626321BF1C4AA00BF6F8A /* PlaylistVC.swift in Sources */,
 				94CD49BB1BAE4A41000E0F62 /* BamBox.xcdatamodeld in Sources */,
+				949D48771C19096800B6B13F /* NavIcons.swift in Sources */,
 				9476261A1BF1A1A300BF6F8A /* SpotifyService.swift in Sources */,
 				94DCABB81BC89E94006CB022 /* StartPlaylistVC.swift in Sources */,
 				94CD49B31BAE4A41000E0F62 /* AppDelegate.swift in Sources */,
