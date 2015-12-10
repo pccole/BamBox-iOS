@@ -31,16 +31,32 @@ class SearchController: NSObject, UISearchControllerDelegate, UISearchResultsUpd
         self.playlist = playlist
         embeddedViewController = viewController
         searchBarContainer = searchBarContainerView
+        
+        setupTableView(viewController)
+        
+        initSearchResultsViewController()
+        
+        initSearchController()
+        
+        // Enable Presentation Context
+        viewController.definesPresentationContext = true
+    
+        setupSearchBar(searchBarContainerView)
+    }
+    
+    func setupTableView(viewController:UIViewController) {
         // Setup the table View
         searchResultsTableview = UITableView(frame: viewController.view.frame, style: UITableViewStyle.Plain)
         searchResultsTableview.dataSource = self;
         searchResultsTableview.delegate = self;
         searchResultsTableview.estimatedRowHeight = 45
         searchResultsTableview.rowHeight = UITableViewAutomaticDimension
-        
         // Register the work order list cell
         searchResultsTableview.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellId)
-        
+
+    }
+    
+    func initSearchResultsViewController() {
         // Init a search result view controller and add the table view as subview
         searchResultsViewController = UIViewController()
         searchResultsViewController.view.addSubview(searchResultsTableview)
@@ -53,17 +69,18 @@ class SearchController: NSObject, UISearchControllerDelegate, UISearchResultsUpd
         tableViewConstraints += NSLayoutConstraint.constraintsWithVisualFormat("V:|[tableView]|", options:[] , metrics: nil, views: tableViewDict)
         
         searchResultsViewController.view.addConstraints(tableViewConstraints)
-        
+    }
+    
+    func initSearchController() {
         // Init a search controller with its view controller for results
         searchController = UISearchController(searchResultsController: searchResultsViewController)
         searchController.searchResultsUpdater = self
         searchController.delegate = self
         searchController.dimsBackgroundDuringPresentation = true
         searchController.searchBar.text = ""
-        
-        // Enable Presentation Context
-        viewController.definesPresentationContext = true
-        
+    }
+    
+    func setupSearchBar(searchBarContainerView:UIView) {
         // add the search bar to the container view
         searchBarContainerView.addSubview(searchController.searchBar)
         

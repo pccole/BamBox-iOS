@@ -40,13 +40,12 @@ class WebService:NSObject {
     }
     
     func postSong(song:SPTPartialTrack, playlist:Playlist, completion:(Bool) -> Void) {
-        let params = ["song_spotify_id":song.identifier]
+        let params = ["song_spotify_id":song.identifier, "token": playlist.ownerToken()]
         Alamofire.request(.POST, "\(baseURL)/playlist/\(playlist.id)/song)", parameters: params).responseJSON(completionHandler: { (response) -> Void in
-            if response.result.isFailure {
-                print(response.result.error?.localizedDescription)
-                completion(false)
-            } else {
+            if case 200...209 = response.response!.statusCode {
                 completion(true)
+            } else {
+                completion(false)
             }
         })
     }

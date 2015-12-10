@@ -21,7 +21,7 @@ public class Playlist {
     
     convenience init(map:JSON) {
         self.init()
-        id = map["id"].int!
+//        id = map["id"].int
         name = map["name"].string
         owner_token = map["owner_token"].string
         participant_token = map["participant_token"].string
@@ -49,5 +49,9 @@ public class Playlist {
     
     func participantToken() -> String {
         return participant_token
+    }
+    
+    func ownerToken() -> String {
+        return owner_token
     }
 }
