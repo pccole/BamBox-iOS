@@ -9,7 +9,7 @@
 import Foundation
 import CoreBluetooth
 
-public class BLE:NSObject, CBPeripheralManagerDelegate, CBCentralManagerDelegate, CBPeripheralDelegate {
+class BLE:NSObject, CBPeripheralManagerDelegate, CBCentralManagerDelegate, CBPeripheralDelegate {
     
     static let singleton = BLE()
     

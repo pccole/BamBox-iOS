@@ -11,11 +11,11 @@ import CoreBluetooth
 import SwiftyJSON
 
 extension BLE {
-    public func centralManagerDidUpdateState(central: CBCentralManager) {
+    func centralManagerDidUpdateState(central: CBCentralManager) {
         print(central)
     }
     
-    public func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
+    func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
 
         print(advertisementData)
 
@@ -33,7 +33,7 @@ extension BLE {
         }
     }
     
-    public func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {
+    func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {
         print(peripheral)
     }
 }

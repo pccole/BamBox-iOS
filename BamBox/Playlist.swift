@@ -11,17 +11,15 @@ import SwiftyJSON
 
 public class Playlist {
     
-    var id:Int = 0
-    var name:String!
-    private var owner_token:String!
-    private var participant_token:String!
-    private var song_plays:[String]!
+    let id:Int!
+    let name:String!
+    let owner_token:String!
+    let participant_token:String!
+    var song_plays:[String]!
     private var spotifyTrackArray:[SPTPartialTrack] = [SPTPartialTrack]()
     
-    
-    convenience init(map:JSON) {
-        self.init()
-//        id = map["id"].int
+    init(map:JSON) {
+        id = map["id"].intValue
         name = map["name"].string
         owner_token = map["owner_token"].string
         participant_token = map["participant_token"].string

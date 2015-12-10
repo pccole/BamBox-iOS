@@ -274,7 +274,7 @@
 				94CD49B21BAE4A41000E0F62 /* AppDelegate.swift */,
 				94BFC5A21BD0A0D700E8A95F /* BLE */,
 				94CD49E31BAE4A82000E0F62 /* WebService */,
-				94DCABBC1BD08BF4006CB022 /* Data Handler */,
+				94DCABBC1BD08BF4006CB022 /* Data Managers */,
 				943793EF1BF42313007EC196 /* Helper Classes */,
 				94DCABB51BC88F5F006CB022 /* Models */,
 				94DCABB41BC88F4E006CB022 /* Views */,
@@ -337,13 +337,13 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
-		94DCABBC1BD08BF4006CB022 /* Data Handler */ = {
+		94DCABBC1BD08BF4006CB022 /* Data Managers */ = {
 			isa = PBXGroup;
 			children = (
 				940D95141BEB0C600017090A /* PlaylistInterface.swift */,
 				94DCABBD1BD08D12006CB022 /* PlaylistManager.swift */,
 			);
-			name = "Data Handler";
+			name = "Data Managers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

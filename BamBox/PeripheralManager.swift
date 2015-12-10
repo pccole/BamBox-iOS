@@ -11,7 +11,7 @@ import CoreBluetooth
 
 
 extension BLE {
-    public func peripheralManagerDidUpdateState(peripheral: CBPeripheralManager) {
+    func peripheralManagerDidUpdateState(peripheral: CBPeripheralManager) {
         var statusMessage = ""
         
         switch peripheral.state {
