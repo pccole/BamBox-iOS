@@ -23,7 +23,7 @@ class LoginScreenVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func loginButtonTapped(sender: AnyObject) {
+    @IBAction func loginButtonTapped(_ sender: AnyObject) {
         SpotifyService.singleton.openSpotifyAuth()
     }
     

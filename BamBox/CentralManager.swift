@@ -11,19 +11,19 @@ import CoreBluetooth
 import SwiftyJSON
 
 extension BLE {
-    func centralManagerDidUpdateState(central: CBCentralManager) {
+    func centralManagerDidUpdateState(_ central: CBCentralManager) {
         print(central)
     }
     
-    func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
+    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
 
         print(advertisementData)
 
         print("central manager did discover")
 
         if let localName = advertisementData[CBAdvertisementDataLocalNameKey] as? String {
-            if localName.containsString("BamBox") {
-                let values:[String] = localName.componentsSeparatedByString("=")
+            if localName.contains("BamBox") {
+                let values:[String] = localName.components(separatedBy: "=")
                 let playlistID:String = values.last!
                 PlaylistManager.singleton.getPlaylistById(Int(playlistID)!, completion: { (bool) -> Void in
                     print("playlist added :D")
@@ -33,7 +33,7 @@ extension BLE {
         }
     }
     
-    func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {
+    func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         print(peripheral)
     }
 }

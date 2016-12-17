@@ -1,11 +1,13 @@
 # Uncomment this line to define a global platform for your project
-# platform :ios, '6.0'
-
-link_with 'BamBox','BamBoxTests','BamBoxUITests'
-
-pod 'Alamofire'
-pod 'SwiftyJSON'
-pod 'ionicons'
+# platform :ios, '9.0'
 
 use_frameworks!
+
+project 'BamBox.xcodeproj'
+
+target 'BamBox' do
+
+pod 'Alamofire'
+
+end
 

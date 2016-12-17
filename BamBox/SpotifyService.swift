@@ -48,18 +48,18 @@ class SpotifyService:NSObject {
     
     func openSpotifyAuth() {
         SPTAuth.defaultInstance().clientID = self.kClientID
-        SPTAuth.defaultInstance().redirectURL = NSURL(string: self.kRedirectURLString)
+        SPTAuth.defaultInstance().redirectURL = URL(string: self.kRedirectURLString)
         SPTAuth.defaultInstance().requestedScopes = [SPTAuthStreamingScope, SPTAuthPlaylistReadPrivateScope, SPTAuthPlaylistModifyPublicScope, SPTAuthPlaylistModifyPrivateScope, SPTAuthUserLibraryReadScope]
-        UIApplication.sharedApplication().openURL(SPTAuth.defaultInstance().loginURL)
+        UIApplication.shared.openURL(SPTAuth.defaultInstance().loginURL)
     }
     
-    func saveSpotifySession(session:SPTSession) {
-        let userDefaults = NSUserDefaults.standardUserDefaults()
-        userDefaults.setBool(true, forKey: "premiumPurchased")
+    func saveSpotifySession(_ session:SPTSession) {
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(true, forKey: "premiumPurchased")
         
-        let sessionData = NSKeyedArchiver.archivedDataWithRootObject(session)
+        let sessionData = NSKeyedArchiver.archivedData(withRootObject: session)
         
-        userDefaults.setObject(sessionData, forKey: "SpotifySession")
+        userDefaults.set(sessionData, forKey: "SpotifySession")
         
         userDefaults.synchronize()
         
@@ -67,15 +67,15 @@ class SpotifyService:NSObject {
     }
     
     func spotifySession() -> SPTSession? {
-        if let sessionData:NSData = NSUserDefaults.standardUserDefaults().objectForKey("SpotifySession") as? NSData {
-            let session = NSKeyedUnarchiver.unarchiveObjectWithData(sessionData) as! SPTSession
+        if let sessionData:Data = UserDefaults.standard.object(forKey: "SpotifySession") as? Data {
+            let session = NSKeyedUnarchiver.unarchiveObject(with: sessionData) as! SPTSession
             return session
         } else {
             return nil
         }
     }
     
-    func renewSpotifySession(complete:(bool:Bool) -> Void) {
+    func renewSpotifySession(_ complete:@escaping (_ bool:Bool) -> Void) {
         SPTAuth.defaultInstance().renewSession(spotifySession()) { (error:NSError!, session:SPTSession!) -> Void in
             if error != nil {
                 self.saveSpotifySession(session)
@@ -86,9 +86,9 @@ class SpotifyService:NSObject {
         }
     }
     
-    func searchSpotifyLibrary(searchQuery:String, completion:([SPTPartialTrack]) -> Void) {
+    func searchSpotifyLibrary(_ searchQuery:String, completion:@escaping ([SPTPartialTrack]) -> Void) {
         if let session = spotifySession() {
-            SPTSearch.performSearchWithQuery(searchQuery, queryType: SPTSearchQueryType.QueryTypeTrack, accessToken: session.accessToken, callback: { (error:NSError!, result:AnyObject!) -> Void in
+            SPTSearch.perform(withQuery: searchQuery, queryType: SPTSearchQueryType.queryTypeTrack, accessToken: session.accessToken, callback: { (error:NSError!, result:AnyObject!) -> Void in
                 print(result)
                 let listPage = result as! SPTListPage
                 if let items = listPage.items as? [SPTPartialTrack]{
@@ -98,7 +98,7 @@ class SpotifyService:NSObject {
             })
         }
     }
-    func playMusicUsingTrack(track:SPTPartialTrack) {
+    func playMusicUsingTrack(_ track:SPTPartialTrack) {
         if self.player == nil {
             self.player = SPTAudioStreamingController(clientId: SpotifyService.singleton.kClientID)
         }
@@ -106,18 +106,18 @@ class SpotifyService:NSObject {
             
             if self.player.loggedIn {
                 print("logged in")
-                SPTTrack.trackWithURI(track.uri, session: session, callback: { (error:NSError!, result:AnyObject!) -> Void in
+                SPTTrack.track(withURI: track.uri, session: session, callback: { (error:NSError!, result:AnyObject!) -> Void in
                     let track = result as! SPTTrack
-                    self.player.playURIs([track.uri], withOptions: SPTPlayOptions(), callback: nil)
+                    self.player.playURIs([track.uri], with: SPTPlayOptions(), callback: nil)
                 })
             } else {
-                self.player.loginWithSession(session) { (error:NSError!) -> Void in
+                self.player.login(with: session) { (error:NSError!) -> Void in
                     if error != nil {
                         print("error logging in \(error.localizedDescription)")
                     }
-                    SPTTrack.trackWithURI(track.uri, session: session, callback: { (error:NSError!, result:AnyObject!) -> Void in
+                    SPTTrack.track(withURI: track.uri, session: session, callback: { (error:NSError!, result:AnyObject!) -> Void in
                         let track = result as! SPTTrack
-                        self.player.playURIs([track.uri], withOptions: SPTPlayOptions(), callback: nil)
+                        self.player.playURIs([track.uri], with: SPTPlayOptions(), callback: nil)
                     })
                     
                 }

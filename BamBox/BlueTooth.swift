@@ -25,30 +25,30 @@ class BLE:NSObject, CBPeripheralManagerDelegate, CBCentralManagerDelegate, CBPer
     override init() {
         super.init()
                 
-        bluetoothPeripheralManager = CBPeripheralManager(delegate: self, queue: dispatch_get_main_queue(), options:[:])
-        centralManager = CBCentralManager(delegate: self, queue: dispatch_get_main_queue(), options:[:])
+        bluetoothPeripheralManager = CBPeripheralManager(delegate: self, queue: DispatchQueue.main, options:[:])
+        centralManager = CBCentralManager(delegate: self, queue: DispatchQueue.main, options:[:])
         
     }
     
-    func broadCastPlaylist(playlist:Playlist) {
-        if bluetoothPeripheralManager.state == CBPeripheralManagerState.PoweredOn {
+    func broadCastPlaylist(_ playlist:Playlist) {
+        if bluetoothPeripheralManager.state == CBPeripheralManagerState.poweredOn {
             isBroadcasting = true
             
             let myCustomServiceUUID = CBUUID(string: uuid)
             
             let playlist = PlaylistManager.singleton.playlistAtIndex(0)
-            let data = playlist.participantToken().dataUsingEncoding(NSUTF8StringEncoding)
+            let data = playlist.participantToken().data(using: String.Encoding.utf8)
             
             let myCharaterisic = CBMutableCharacteristic(type: myCustomServiceUUID,
-                properties: CBCharacteristicProperties.Read, value: data, permissions: CBAttributePermissions.Readable)
+                properties: CBCharacteristicProperties.read, value: data, permissions: CBAttributePermissions.readable)
             
             let myService = CBMutableService(type: myCustomServiceUUID, primary: true)
             myService.characteristics = [myCharaterisic]
             
             dataDictionary = [CBAdvertisementDataLocalNameKey:"BamBox=\(playlist.id)",
-                CBAdvertisementDataServiceUUIDsKey: [myService.UUID]]
+                CBAdvertisementDataServiceUUIDsKey: [myService.uuid]]
             
-            bluetoothPeripheralManager.addService(myService)
+            bluetoothPeripheralManager.add(myService)
             bluetoothPeripheralManager.startAdvertising(dataDictionary)
         } else {
             print("Bluetooth not powered on")
@@ -59,9 +59,9 @@ class BLE:NSObject, CBPeripheralManagerDelegate, CBCentralManagerDelegate, CBPer
         bluetoothPeripheralManager.stopAdvertising()
     }
     
-    func scan(foundDevice:(() -> Void)!) {
+    func scan(_ foundDevice:(() -> Void)!) {
         self.foundDeviceCallBack = foundDevice
-        centralManager.scanForPeripheralsWithServices(nil, options: [:])
+        centralManager.scanForPeripherals(withServices: nil, options: [:])
     }
 }
 

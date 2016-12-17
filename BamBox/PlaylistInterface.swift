@@ -9,8 +9,8 @@
 import UIKit
 
 protocol PlaylistInterface {
-    func createPlaylistWithTitle(title:String, completion:(Bool) -> Void)
-    func addPlaylist(playlist:Playlist)
-    func removePlaylist(playlist:Playlist)
-    func playlistAtIndex(index:Int) -> Playlist
+    func createPlaylistWithTitle(_ title:String, completion:(Bool) -> Void)
+    func addPlaylist(_ playlist:Playlist)
+    func removePlaylist(_ playlist:Playlist)
+    func playlistAtIndex(_ index:Int) -> Playlist
 }

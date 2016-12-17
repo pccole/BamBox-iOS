@@ -18,7 +18,7 @@ class MyPlaylistsVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.tableView.registerClass(PlaylistTableViewCell.self, forCellReuseIdentifier: PlaylistTableViewCell.kPlaylistID)
+        self.tableView.register(PlaylistTableViewCell.self, forCellReuseIdentifier: PlaylistTableViewCell.kPlaylistID)
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,12 +32,12 @@ class MyPlaylistsVC: UIViewController, UITableViewDataSource, UITableViewDelegat
 // Mark - UITableViewDelegate
 
 extension MyPlaylistsVC {
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return PlaylistManager.singleton.playlistCount()
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(PlaylistTableViewCell.kPlaylistID, forIndexPath: indexPath) as! PlaylistTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: PlaylistTableViewCell.kPlaylistID, for: indexPath) as! PlaylistTableViewCell
         let playlist = PlaylistManager.singleton.playlistAtIndex(indexPath.row)
         cell.playlist = playlist
         cell.textLabel?.text = playlist.name
@@ -48,8 +48,8 @@ extension MyPlaylistsVC {
 // Mark - UITableViewDataSource
 
 extension MyPlaylistsVC {
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! PlaylistTableViewCell
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! PlaylistTableViewCell
         cell.broadCastPlaylist()
     }
 }

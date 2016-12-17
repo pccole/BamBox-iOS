@@ -11,23 +11,23 @@ import CoreBluetooth
 
 
 extension BLE {
-    func peripheralManagerDidUpdateState(peripheral: CBPeripheralManager) {
+    func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
         var statusMessage = ""
         
         switch peripheral.state {
-        case CBPeripheralManagerState.PoweredOn:
+        case CBPeripheralManagerState.poweredOn:
             statusMessage = "Bluetooth Status: Turned On"
             
-        case CBPeripheralManagerState.PoweredOff:
+        case CBPeripheralManagerState.poweredOff:
             statusMessage = "Bluetooth Status: Turned Off"
             
-        case CBPeripheralManagerState.Resetting:
+        case CBPeripheralManagerState.resetting:
             statusMessage = "Bluetooth Status: Resetting"
             
-        case CBPeripheralManagerState.Unauthorized:
+        case CBPeripheralManagerState.unauthorized:
             statusMessage = "Bluetooth Status: Not Authorized"
             
-        case CBPeripheralManagerState.Unsupported:
+        case CBPeripheralManagerState.unsupported:
             statusMessage = "Bluetooth Status: Not Supported"
             
         default:

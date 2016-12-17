@@ -17,14 +17,14 @@ class StartPlaylistVC: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.hidden = false
+        self.navigationController?.navigationBar.isHidden = false
         self.playlistTextField.delegate = self
-        self.playlistTextField.returnKeyType = UIReturnKeyType.Done
-        self.playlistTextField.textColor = UIColor.whiteColor()
+        self.playlistTextField.returnKeyType = UIReturnKeyType.done
+        self.playlistTextField.textColor = UIColor.white
         self.playlistTextField.placeholder = "Enter Playlist Name"
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     }
 
@@ -33,7 +33,7 @@ class StartPlaylistVC: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         PlaylistManager.singleton.createPlaylistWithTitle(textField.text!) { (bool) -> Void in
             if bool {
                 

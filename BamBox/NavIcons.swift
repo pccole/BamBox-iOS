@@ -10,7 +10,7 @@ import Foundation
 
 
 class NavIcons {
-    static func addBackArrow(viewController:UIViewController) {
+    static func addBackArrow(_ viewController:UIViewController) {
         
     }
 }

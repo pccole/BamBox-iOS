@@ -9,14 +9,14 @@
 import UIKit
 import SwiftyJSON
 
-public class Playlist {
+open class Playlist {
     
     let id:Int!
     let name:String!
     let owner_token:String!
     let participant_token:String!
     var song_plays:[String]!
-    private var spotifyTrackArray:[SPTPartialTrack] = [SPTPartialTrack]()
+    fileprivate var spotifyTrackArray:[SPTPartialTrack] = [SPTPartialTrack]()
     
     init(map:JSON) {
         id = map["id"].intValue
@@ -26,7 +26,7 @@ public class Playlist {
         song_plays = map["song_plays"].arrayObject as! [String]
     }
     
-    func addTrackToPlaylist(track:SPTPartialTrack, completion:(Bool) -> Void) {
+    func addTrackToPlaylist(_ track:SPTPartialTrack, completion:(Bool) -> Void) {
         self.spotifyTrackArray.append(track)
         completion(true)
 //        WebService.singleton.postSong(track, playlist: self) { (bool) -> Void in
@@ -39,7 +39,7 @@ public class Playlist {
 //        }
     }
     
-    func spotifyTrackAtIndex(index:Int) -> SPTPartialTrack {
+    func spotifyTrackAtIndex(_ index:Int) -> SPTPartialTrack {
         return spotifyTrackArray[index]
     }
     

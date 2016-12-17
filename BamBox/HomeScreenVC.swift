@@ -19,14 +19,14 @@ class HomeScreenVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        bamBoxIV.userInteractionEnabled = true
-        let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "broadCast")
+        bamBoxIV.isUserInteractionEnabled = true
+        let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(HomeScreenVC.broadCast))
         bamBoxIV.addGestureRecognizer(tap)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        self.navigationController?.navigationBarHidden = true
+        self.navigationController?.isNavigationBarHidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,11 +34,11 @@ class HomeScreenVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func startPlaylistTapped(sender: AnyObject) {
+    @IBAction func startPlaylistTapped(_ sender: AnyObject) {
         NavRouter.router().pushStartPlaylist()
     }
 
-    @IBAction func scanPlaylistTapped(sender: AnyObject) {
+    @IBAction func scanPlaylistTapped(_ sender: AnyObject) {
         NavRouter.router().pushScanForPlaylist()
     }
 

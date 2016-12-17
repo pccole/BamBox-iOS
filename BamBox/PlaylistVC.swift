@@ -19,13 +19,13 @@ class PlaylistVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = playlist.name
-        self.addBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "pushSearchSpotifyVC")
+        self.addBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(PlaylistVC.pushSearchSpotifyVC))
         self.navigationItem.rightBarButtonItem = self.addBarButtonItem
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,12 +33,12 @@ class PlaylistVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tableView.reloadData()
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     }
     
@@ -48,12 +48,12 @@ class PlaylistVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 }
 
 extension PlaylistVC {
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.playlist.spotifyTrackCount()
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let partialTrack = self.playlist.spotifyTrackAtIndex(indexPath.row)
         cell.textLabel?.text = partialTrack.name
         return cell
@@ -61,7 +61,7 @@ extension PlaylistVC {
 }
 
 extension PlaylistVC {
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         SpotifyService.singleton.playMusicUsingTrack(self.playlist.spotifyTrackAtIndex(indexPath.row))
     }
 }

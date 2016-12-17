@@ -18,7 +18,7 @@ class ScanForPlaylistsVC: UIViewController, UITableViewDataSource, UITableViewDe
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        self.tableView.registerClass(BroadCastTableViewCell.self, forCellReuseIdentifier: "cell")
+        self.tableView.register(BroadCastTableViewCell.self, forCellReuseIdentifier: "cell")
         BLE.singleton.scan { () -> Void in
             self.tableView.reloadData()
         }
@@ -30,12 +30,12 @@ class ScanForPlaylistsVC: UIViewController, UITableViewDataSource, UITableViewDe
 }
 
 extension ScanForPlaylistsVC {
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return PlaylistManager.singleton.broadCastPlaylistCount()
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! BroadCastTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! BroadCastTableViewCell
         let playlist = PlaylistManager.singleton.broadCastPlaylistAtIndex(indexPath.row)
         cell.textLabel?.text = playlist.name
         cell.playlist = playlist
@@ -44,8 +44,8 @@ extension ScanForPlaylistsVC {
 }
 
 extension ScanForPlaylistsVC {
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! BroadCastTableViewCell
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! BroadCastTableViewCell
         cell.pushToPlaylist()
     }
 }
