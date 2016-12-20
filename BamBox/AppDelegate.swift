@@ -23,35 +23,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         window?.rootViewController = self.navRouter
         
-        if let session = SpotifyService.singleton.spotifySession() {
-            if !session.isValid() {
-                SpotifyService.singleton.renewSpotifySession({ (bool) -> Void in
-                    if bool {
-                        self.navRouter?.showHomeScreen()
-                    } else {
-                        self.navRouter?.showLoginScreen()
-                    }
-                })
-            } else {
-                self.navRouter?.showHomeScreen()
-            }
-        } else {
-            self.navRouter?.showLoginScreen()
-        }
-        
+		
         return true
     }
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        if SPTAuth.defaultInstance().canHandle(URL(string:SpotifyService.singleton.kRedirectURLString)!) {
-            SPTAuth.defaultInstance().handleAuthCallback(withTriggeredAuthURL: url, callback: { (error:NSError!, session:SPTSession!) -> Void in
-                if error != nil {
-                    print("Auth Error")
-                    return
-                }
-                SpotifyService.singleton.saveSpotifySession(session)
-            })
-        }
+        
         return false
     }
     
