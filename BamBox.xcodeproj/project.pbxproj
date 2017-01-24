@@ -8,13 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		50E1E1ED1E7DAFD91130F68A /* Pods_BamBoxUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73F6F7E13D8DA46F6050793B /* Pods_BamBoxUITests.framework */; };
+		9424EBCA1E36CBC300F3167D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9424EBC81E36CBC300F3167D /* LoginViewController.swift */; };
+		9424EBCB1E36CBC300F3167D /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9424EBC91E36CBC300F3167D /* LoginViewController.xib */; };
+		9424EBD21E36D46B00F3167D /* NearbyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9424EBD11E36D46B00F3167D /* NearbyService.swift */; };
+		9424EBD41E36E32300F3167D /* BamBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9424EBD31E36E32300F3167D /* BamBoxViewController.swift */; };
+		9424EBD71E36E38300F3167D /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9424EBD61E36E38300F3167D /* ColorExtensions.swift */; };
+		9424EBDA1E36FFA800F3167D /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9424EBD91E36FFA800F3167D /* UIViewExtensions.swift */; };
 		9482722E1E05AB4E00CCF515 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9482722D1E05AB4E00CCF515 /* AppDelegate.swift */; };
 		948272351E05AB4E00CCF515 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 948272341E05AB4E00CCF515 /* Assets.xcassets */; };
 		948272381E05AB4E00CCF515 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 948272361E05AB4E00CCF515 /* LaunchScreen.storyboard */; };
 		948272431E05AB4E00CCF515 /* BamBoxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948272421E05AB4E00CCF515 /* BamBoxTests.swift */; };
 		9482724E1E05AB4E00CCF515 /* BamBoxUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9482724D1E05AB4E00CCF515 /* BamBoxUITests.swift */; };
 		9482729F1E05B2AE00CCF515 /* NavRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9482729D1E05B2AE00CCF515 /* NavRouter.swift */; };
-		948272A01E05B2AE00CCF515 /* NavRouter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9482729E1E05B2AE00CCF515 /* NavRouter.xib */; };
 		948272A41E05B6A300CCF515 /* SpotifyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948272A31E05B6A300CCF515 /* SpotifyService.swift */; };
 		BBE67C250AE7961C33E7911D /* Pods_BamBoxTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C199F6F2EADC1619ACB6D6 /* Pods_BamBoxTests.framework */; };
 		EDF1263DD0443795892AB0BB /* Pods_BamBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1675AAA192647FACEA4BAC1B /* Pods_BamBox.framework */; };
@@ -44,6 +49,13 @@
 		794689971B5B786F6B8D05F9 /* Pods-BamBoxUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BamBoxUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BamBoxUITests/Pods-BamBoxUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7E0A6B5EB2CEC9A6EF6E5FCF /* Pods-BamBoxUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BamBoxUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BamBoxUITests/Pods-BamBoxUITests.release.xcconfig"; sourceTree = "<group>"; };
 		93C199F6F2EADC1619ACB6D6 /* Pods_BamBoxTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BamBoxTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9424EBC81E36CBC300F3167D /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		9424EBC91E36CBC300F3167D /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		9424EBCD1E36CE4900F3167D /* BamBox-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BamBox-Bridging-Header.h"; sourceTree = "<group>"; };
+		9424EBD11E36D46B00F3167D /* NearbyService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearbyService.swift; sourceTree = "<group>"; };
+		9424EBD31E36E32300F3167D /* BamBoxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BamBoxViewController.swift; sourceTree = "<group>"; };
+		9424EBD61E36E38300F3167D /* ColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
+		9424EBD91E36FFA800F3167D /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		9482722A1E05AB4E00CCF515 /* BamBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BamBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9482722D1E05AB4E00CCF515 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		948272341E05AB4E00CCF515 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -56,7 +68,6 @@
 		9482724D1E05AB4E00CCF515 /* BamBoxUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BamBoxUITests.swift; sourceTree = "<group>"; };
 		9482724F1E05AB4E00CCF515 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9482729D1E05B2AE00CCF515 /* NavRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavRouter.swift; sourceTree = "<group>"; };
-		9482729E1E05B2AE00CCF515 /* NavRouter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavRouter.xib; sourceTree = "<group>"; };
 		948272A31E05B6A300CCF515 /* SpotifyService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyService.swift; sourceTree = "<group>"; };
 		99822C655BC6139F68387DF8 /* Pods-BamBoxTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BamBoxTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BamBoxTests/Pods-BamBoxTests.release.xcconfig"; sourceTree = "<group>"; };
 		9A354FA2EEE70B34B0EC8E30 /* Pods-BamBox.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BamBox.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BamBox/Pods-BamBox.debug.xcconfig"; sourceTree = "<group>"; };
@@ -91,6 +102,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9424EBCC1E36CBDF00F3167D /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				9424EBC81E36CBC300F3167D /* LoginViewController.swift */,
+				9424EBC91E36CBC300F3167D /* LoginViewController.xib */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		9424EBD51E36E35500F3167D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9424EBD61E36E38300F3167D /* ColorExtensions.swift */,
+				9424EBD91E36FFA800F3167D /* UIViewExtensions.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		9424EBDB1E37086A00F3167D /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		948272211E05AB4E00CCF515 = {
 			isa = PBXGroup;
 			children = (
@@ -117,8 +153,8 @@
 			isa = PBXGroup;
 			children = (
 				9482722D1E05AB4E00CCF515 /* AppDelegate.swift */,
+				9424EBD51E36E35500F3167D /* Extensions */,
 				948272A21E05B68700CCF515 /* Services */,
-				9482729B1E05B21300CCF515 /* NavRouter */,
 				948272A11E05B4AB00CCF515 /* View Controllers */,
 				9482729C1E05B21F00CCF515 /* Support Files */,
 			);
@@ -143,21 +179,14 @@
 			path = BamBoxUITests;
 			sourceTree = "<group>";
 		};
-		9482729B1E05B21300CCF515 /* NavRouter */ = {
-			isa = PBXGroup;
-			children = (
-				9482729D1E05B2AE00CCF515 /* NavRouter.swift */,
-				9482729E1E05B2AE00CCF515 /* NavRouter.xib */,
-			);
-			name = NavRouter;
-			sourceTree = "<group>";
-		};
 		9482729C1E05B21F00CCF515 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
+				9424EBDB1E37086A00F3167D /* Fonts */,
 				948272341E05AB4E00CCF515 /* Assets.xcassets */,
 				948272361E05AB4E00CCF515 /* LaunchScreen.storyboard */,
 				948272391E05AB4E00CCF515 /* Info.plist */,
+				9424EBCD1E36CE4900F3167D /* BamBox-Bridging-Header.h */,
 			);
 			name = "Support Files";
 			sourceTree = "<group>";
@@ -165,6 +194,9 @@
 		948272A11E05B4AB00CCF515 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9424EBD31E36E32300F3167D /* BamBoxViewController.swift */,
+				9482729D1E05B2AE00CCF515 /* NavRouter.swift */,
+				9424EBCC1E36CBDF00F3167D /* Login */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -173,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				948272A31E05B6A300CCF515 /* SpotifyService.swift */,
+				9424EBD11E36D46B00F3167D /* NearbyService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -273,7 +306,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0820;
-				ORGANIZATIONNAME = "Phil Cole";
+				ORGANIZATIONNAME = BamBox;
 				TargetAttributes = {
 					948272291E05AB4E00CCF515 = {
 						CreatedOnToolsVersion = 8.2;
@@ -319,7 +352,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				948272A01E05B2AE00CCF515 /* NavRouter.xib in Resources */,
+				9424EBCB1E36CBC300F3167D /* LoginViewController.xib in Resources */,
 				948272381E05AB4E00CCF515 /* LaunchScreen.storyboard in Resources */,
 				948272351E05AB4E00CCF515 /* Assets.xcassets in Resources */,
 			);
@@ -484,9 +517,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9424EBCA1E36CBC300F3167D /* LoginViewController.swift in Sources */,
 				9482729F1E05B2AE00CCF515 /* NavRouter.swift in Sources */,
+				9424EBDA1E36FFA800F3167D /* UIViewExtensions.swift in Sources */,
 				948272A41E05B6A300CCF515 /* SpotifyService.swift in Sources */,
 				9482722E1E05AB4E00CCF515 /* AppDelegate.swift in Sources */,
+				9424EBD21E36D46B00F3167D /* NearbyService.swift in Sources */,
+				9424EBD41E36E32300F3167D /* BamBoxViewController.swift in Sources */,
+				9424EBD71E36E38300F3167D /* ColorExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -630,13 +668,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9A354FA2EEE70B34B0EC8E30 /* Pods-BamBox.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = LZX69D2T2M;
 				INFOPLIST_FILE = BamBox/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = PhilCole.BamBox;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.BamBox.BamBox-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/BamBox/BamBox-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -645,13 +683,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1D6710F6B3BC2AEC59FBF27D /* Pods-BamBox.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = LZX69D2T2M;
 				INFOPLIST_FILE = BamBox/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = PhilCole.BamBox;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.BamBox.BamBox-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/BamBox/BamBox-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

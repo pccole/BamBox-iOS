@@ -8,6 +8,8 @@ target 'BamBox' do
   # Pods for BamBox
 
   pod 'Alamofire'
+  pod 'Spotify-iOS-SDK'
+  pod 'NearbyMessages'
 
   target 'BamBoxTests' do
     inherit! :search_paths

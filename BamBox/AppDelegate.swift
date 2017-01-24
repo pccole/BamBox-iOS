@@ -9,21 +9,19 @@
 import UIKit
 import CoreData
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var navRouter:NavRouter?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        self.navRouter = NavRouter(nibName:nil, bundle: nil)
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        window?.rootViewController = self.navRouter
-        
-		
+        window?.rootViewController = navRouter
+		LoginViewController.show()
         return true
     }
     

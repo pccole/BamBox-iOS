@@ -1,6 +1,0 @@
-framework module Pods_BamBox {
-  umbrella header "Pods-BamBox-umbrella.h"
-
-  export *
-  module * { export * }
-}

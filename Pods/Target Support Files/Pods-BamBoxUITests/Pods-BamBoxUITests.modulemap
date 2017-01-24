@@ -1,6 +1,0 @@
-framework module Pods_BamBoxUITests {
-  umbrella header "Pods-BamBoxUITests-umbrella.h"
-
-  export *
-  module * { export * }
-}
