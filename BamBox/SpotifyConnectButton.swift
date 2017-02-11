@@ -27,14 +27,6 @@ class SpotifyConnectButton: SPTConnectButton {
 	}
 	
 	@objc private func spotifyConnectButtonTouched() {
-		let auth = SPTAuth.defaultInstance()
-		if SPTAuth.supportsApplicationAuthentication() {
-			UIApplication.shared.open(auth!.spotifyAppAuthenticationURL(), options: [:], completionHandler: nil)
-		} else {
-			guard let redirctURL = BamBoxSpotify.redirect.url(),
-				let url = SPTAuth.loginURL(forClientId: BamBoxSpotify.clientId, withRedirectURL: redirctURL, scopes: [SPTAuthStreamingScope], responseType: nil)
-				else { return }
-			UIApplication.shared.open(url, options: [:], completionHandler: nil)
-		}
+		sptService.login()
 	}
 }

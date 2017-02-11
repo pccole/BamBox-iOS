@@ -18,14 +18,59 @@ struct BamBoxSpotify {
 }
 
 
+let sptService = SpotifyService()
 
 class SpotifyService {
 	
-	init() {
-		
-	}
+	fileprivate init() { }
 	
 	func login() {
-		
+		let scopes = [SPTAuthStreamingScope,
+		              SPTAuthUserReadPrivateScope,
+		              SPTAuthPlaylistReadCollaborativeScope,
+		              SPTAuthPlaylistReadPrivateScope,
+		              SPTAuthPlaylistModifyPublicScope,
+		              SPTAuthPlaylistModifyPrivateScope]
+		guard let redirctURL = BamBoxSpotify.redirect.url(),
+		let url = SPTAuth.loginURL(forClientId: BamBoxSpotify.clientId, withRedirectURL: redirctURL, scopes: scopes, responseType: nil)
+		else { return }
+		UIApplication.shared.open(url, options: [:], completionHandler: nil)
+	}
+	
+	func handLogin(with url:URL) -> Bool {
+		guard let auth = SPTAuth.defaultInstance(), auth.canHandle(url) else { return false }
+		auth.handleAuthCallback(withTriggeredAuthURL: url) { (error:Error?, session:SPTSession?) in
+			guard let s = session else {
+				if let e = error {
+					print(e.localizedDescription)
+					// display error
+				}
+				return
+			}
+			auth.session = s
+		}
+		return true
 	}
 }
+//SPTAuth *auth = [SPTAuth defaultInstance];
+//
+//SPTAuthCallback authCallback = ^(NSError *error, SPTSession *session) {
+//	// This is the callback that'll be triggered when auth is completed (or fails).
+//	
+//	if (error) {
+//		NSLog(@"*** Auth error: %@", error);
+//	} else {
+//		auth.session = session;
+//	}
+//	[[NSNotificationCenter defaultCenter] postNotificationName:@"sessionUpdated" object:self];
+//};
+//
+///*
+//Handle the callback from the authentication service. -[SPAuth -canHandleURL:]
+//helps us filter out URLs that aren't authentication URLs (i.e., URLs you use elsewhere in your application).
+//*/
+//
+//if ([auth canHandleURL:url]) {
+//	[auth handleAuthCallbackWithTriggeredAuthURL:url callback:authCallback];
+//	return YES;
+//}
