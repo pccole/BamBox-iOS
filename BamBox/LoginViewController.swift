@@ -17,5 +17,7 @@ class LoginViewController: BamBoxViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		
     }
+	
 }

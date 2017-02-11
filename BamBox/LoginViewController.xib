@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="ipad12_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -11,33 +11,40 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="BamBox" customModuleProvider="target">
             <connections>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="view" destination="iN0-l3-epB" id="g5D-ol-zWh"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gGK-oT-QlF">
-                    <rect key="frame" x="126" y="318" width="122" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Login with spotify"/>
-                </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BamBoxLogo" translatesAutoresizingMaskIntoConstraints="NO" id="7OQ-Qo-HG5">
-                    <rect key="frame" x="67.5" y="111" width="240" height="70"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b6I-eT-l4I" customClass="SpotifyConnectButton" customModule="BamBox" customModuleProvider="target">
+                    <rect key="frame" x="392" y="822.5" width="240" height="59"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="240" id="FVR-Ns-7qp"/>
-                        <constraint firstAttribute="height" constant="70" id="Jnv-wu-aO2"/>
+                        <constraint firstAttribute="width" constant="240" id="9f1-iS-J9W"/>
+                        <constraint firstAttribute="height" constant="59" id="TLc-zw-oT3"/>
+                    </constraints>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BamBoxLogo" translatesAutoresizingMaskIntoConstraints="NO" id="QXN-wU-ice">
+                    <rect key="frame" x="319" y="484.5" width="386" height="90"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="90" id="6z8-w0-3CV"/>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" priority="750" constant="700" id="xV8-er-eEx"/>
                     </constraints>
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="7OQ-Qo-HG5" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="NsY-q8-kJJ"/>
-                <constraint firstItem="7OQ-Qo-HG5" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-187.5" id="Ubv-dX-eWp"/>
+                <constraint firstItem="QXN-wU-ice" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-153.5" id="2Cw-TV-D7i"/>
+                <constraint firstItem="QXN-wU-ice" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="9ML-Dc-RR2"/>
+                <constraint firstItem="b6I-eT-l4I" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="169" id="L7R-vb-m9R"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="QXN-wU-ice" secondAttribute="trailing" constant="16" id="lX8-U5-csV"/>
+                <constraint firstItem="QXN-wU-ice" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="th4-8p-cdI"/>
+                <constraint firstItem="b6I-eT-l4I" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="zBA-vM-WYd"/>
             </constraints>
-            <point key="canvasLocation" x="33.5" y="54.5"/>
+            <point key="canvasLocation" x="33" y="54"/>
         </view>
     </objects>
     <resources>

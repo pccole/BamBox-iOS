@@ -8,19 +8,27 @@
 
 import UIKit
 
+@IBDesignable
 class BamBoxViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = UIColor(r: 39, g: 39, b: 39)
+		setup()
     }
+	
+	func setup() {
+		view.backgroundColor = UIColor(r: 39, g: 39, b: 39)
+	}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+	
+	override func prepareForInterfaceBuilder() {
+		super.prepareForInterfaceBuilder()
+		setup()
+	}
 
     /*
     // MARK: - Navigation

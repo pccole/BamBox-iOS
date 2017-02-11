@@ -20,13 +20,13 @@ class NearbyService {
 		messageManager = GNSMessageManager(apiKey: "AIzaSyCYDjvzQhs5eQJch_ODz2Tp5FsH7IZMtAE", paramsBlock: { (params: GNSMessageManagerParams?) in
 			guard let params = params else { return }
 			params.microphonePermissionErrorHandler = { (hasError: Bool) in
-				print("DIRECT THE USER TO THE SETTINGS APP")
+				print("TURN ON YOUR SOUND FUCKER")
 			}
 			params.bluetoothPowerErrorHandler = { (hasError: Bool) in
-				print("DIRECT THE USER TO THE SETTINGS APP")
+				print("BLUETOOTH OR NO GO BRO")
 			}
 			params.bluetoothPermissionErrorHandler = { (hasError: Bool) in
-				print("DIRECT THE USER TO THE SETTINGS APP")
+				print("SEE ABOVE, BITCH")
 			}
 		})
 	}
@@ -66,5 +66,10 @@ class NearbyService {
 		// Publish the name to nearby devices.
 		let pubMessage: GNSMessage = GNSMessage(content: name.data(using: .utf8, allowLossyConversion: true))
 		publication = messageManager.publication(with: pubMessage)
+	}
+	
+	func sendMessage(message: String) {
+		
+		
 	}
 }
