@@ -22,7 +22,12 @@ let sptService = SpotifyService()
 
 class SpotifyService {
 	
-	fileprivate init() { }
+	fileprivate init() {
+		guard let auth = SPTAuth.defaultInstance() else { return }
+		auth.clientID = BamBoxSpotify.clientId
+		auth.redirectURL = BamBoxSpotify.redirect.url()
+		
+	}
 	
 	func login() {
 		let scopes = [SPTAuthStreamingScope,
@@ -43,7 +48,6 @@ class SpotifyService {
 			guard let s = session else {
 				if let e = error {
 					print(e.localizedDescription)
-					// display error
 				}
 				return
 			}
@@ -52,25 +56,3 @@ class SpotifyService {
 		return true
 	}
 }
-//SPTAuth *auth = [SPTAuth defaultInstance];
-//
-//SPTAuthCallback authCallback = ^(NSError *error, SPTSession *session) {
-//	// This is the callback that'll be triggered when auth is completed (or fails).
-//	
-//	if (error) {
-//		NSLog(@"*** Auth error: %@", error);
-//	} else {
-//		auth.session = session;
-//	}
-//	[[NSNotificationCenter defaultCenter] postNotificationName:@"sessionUpdated" object:self];
-//};
-//
-///*
-//Handle the callback from the authentication service. -[SPAuth -canHandleURL:]
-//helps us filter out URLs that aren't authentication URLs (i.e., URLs you use elsewhere in your application).
-//*/
-//
-//if ([auth canHandleURL:url]) {
-//	[auth handleAuthCallbackWithTriggeredAuthURL:url callback:authCallback];
-//	return YES;
-//}
