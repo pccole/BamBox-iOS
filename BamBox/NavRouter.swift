@@ -48,13 +48,24 @@ extension NavRouter {
 }
 
 extension NavRouter {
-	func mainView(controller:UIViewController, animated:Bool = false) {
+	/**
+		animated is false
+	*/
+	func setMainViewController(_ controller:UIViewController, animated:Bool = false) {
 		navController.setViewControllers([controller], animated: false)
 		guard animated else { return }
 		navController.view.alpha = 0
 		UIView.animate(withDuration: 0.3) { 
 			self.navController.view.alpha = 1
 		}
+	}
+	
+	/**
+		animated is true by default
+	*/
+	func pushViewController(_ viewController:UIViewController, animated:Bool = false) -> Void {
+		navController.pushViewController(viewController, animated: animated)
+		
 	}
 }
 

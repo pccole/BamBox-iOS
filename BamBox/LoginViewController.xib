@@ -26,6 +26,9 @@
                         <constraint firstAttribute="width" constant="240" id="9f1-iS-J9W"/>
                         <constraint firstAttribute="height" constant="59" id="TLc-zw-oT3"/>
                     </constraints>
+                    <connections>
+                        <action selector="signInToSpotifyTapped:" destination="-1" eventType="valueChanged" id="OsV-PI-tYQ"/>
+                    </connections>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BamBoxLogo" translatesAutoresizingMaskIntoConstraints="NO" id="QXN-wU-ice">
                     <rect key="frame" x="319" y="484.5" width="386" height="90"/>

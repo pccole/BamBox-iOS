@@ -22,6 +22,13 @@ let sptService = SpotifyService()
 
 class SpotifyService {
 	
+	var isValidSession: Bool {
+		get {
+			guard let auth = SPTAuth.defaultInstance(), let session = auth.session else { return false }
+			return session.isValid()
+		}
+	}
+	
 	fileprivate init() {
 		guard let auth = SPTAuth.defaultInstance() else { return }
 		auth.clientID = BamBoxSpotify.clientId
@@ -29,7 +36,10 @@ class SpotifyService {
 		
 	}
 	
-	func login() {
+	private var loginCallback:Callback?
+	
+	func login(callback:Callback?) {
+		loginCallback = callback
 		let scopes = [SPTAuthStreamingScope,
 		              SPTAuthUserReadPrivateScope,
 		              SPTAuthPlaylistReadCollaborativeScope,
@@ -52,6 +62,7 @@ class SpotifyService {
 				return
 			}
 			auth.session = s
+			self.loginCallback?()
 		}
 		return true
 	}

@@ -8,16 +8,27 @@
 
 import UIKit
 
+
 @IBDesignable
 class BamBoxViewController: UIViewController {
 
+	@IBInspectable var backgroundColor: UIColor {
+		get {
+			return view.backgroundColor ?? BamBoxColor.black
+		}
+		set {
+			view.backgroundColor = newValue
+		}
+	}
+	
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		setup()
     }
 	
 	func setup() {
-		view.backgroundColor = UIColor(r: 39, g: 39, b: 39)
+		view.backgroundColor = BamBoxColor.black
 	}
 
     override func didReceiveMemoryWarning() {
@@ -30,14 +41,10 @@ class BamBoxViewController: UIViewController {
 		setup()
 	}
 
-    /*
-    // MARK: - Navigation
+	/**
+		super implementation does nothing
+	*/
+	class func show() { }
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+}	
 
-}

@@ -2,15 +2,20 @@
 //  SpotifyConnectButton.swift
 //  BamBox
 //
-//  Created by Phil Cole on 1/25/17.
+//  Created by Phil Cole on 2/20/17.
 //  Copyright © 2017 BamBox. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-
-@IBDesignable
 class SpotifyConnectButton: SPTConnectButton {
+	
+	private var callback:Callback?
+	
+	convenience init(_ callback:Callback?) {
+		self.init(frame: CGRect.zero)
+		self.callback = callback
+	}
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -22,11 +27,11 @@ class SpotifyConnectButton: SPTConnectButton {
 		commonInit()
 	}
 	
-	private func commonInit() {
-		addTarget(self, action: #selector(spotifyConnectButtonTouched), for: UIControlEvents.touchUpInside)
+	func commonInit() {
+		addTarget(self, action: #selector(loginTapped), for: UIControlEvents.touchUpInside)
 	}
 	
-	@objc private func spotifyConnectButtonTouched() {
-		sptService.login()
+	@objc private func loginTapped() {
+		sptService.login(callback: callback)
 	}
 }
