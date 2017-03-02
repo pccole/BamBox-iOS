@@ -10,7 +10,7 @@ import UIKit
 
 class SpotifyConnectButton: SPTConnectButton {
 	
-	private var callback:Callback?
+	var callback:Callback?
 	
 	convenience init(_ callback:Callback?) {
 		self.init(frame: CGRect.zero)

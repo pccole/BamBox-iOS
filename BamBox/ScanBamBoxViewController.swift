@@ -12,6 +12,12 @@ class ScanBamBoxViewController: BamBoxViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+		sptService.getUser { (user:SPTUser?) in
+			guard let u = user else {
+				return
+			}
+			print(u)
+		}
     }
 	
 	override class func show() {

@@ -17,6 +17,7 @@ class MainViewController: BamBoxViewController {
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
+		sptService.getUser(userCallback: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,15 +26,22 @@ class MainViewController: BamBoxViewController {
 	
 	@IBAction func createPlaylistTapped(_ sender: UIButton) {
 		guard sptService.isValidSession else {
-			LoginViewController.show() { CreateBamBoxViewController.show() }
+			LoginViewController.show() {
+				let playlist = PlaylistViewController(title: "Playlists", playlistRunable: sptService.getAllPlaylist)
+				navRouter.setViewControllers([MainViewController(), playlist], animated: true)
+				navRouter.isNavigationBarHidden = false
+			}
 			return
 		}
-		CreateBamBoxViewController.show()
+		PlaylistViewController.show(title: "Playlists", playlistRunable: sptService.getAllPlaylist)
 	}
 	
 	@IBAction func scanForBamBox(_ sender: UIButton) {
 		guard sptService.isValidSession else {
-			LoginViewController.show() { ScanBamBoxViewController.show() }
+			LoginViewController.show() {
+				navRouter.setViewControllers([MainViewController(), ScanBamBoxViewController()], animated: true)
+				navRouter.isNavigationBarHidden = false
+			}
 			return
 		}
 		ScanBamBoxViewController.show()

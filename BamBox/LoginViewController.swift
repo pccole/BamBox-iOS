@@ -10,8 +10,8 @@ import UIKit
 
 class LoginViewController: BamBoxViewController {
 	
-	private var spotifyButton:SpotifyConnectButton!
 	private var callback:Callback?
+	@IBOutlet weak var spotifyConnectButton: SpotifyConnectButton!
 	
 	convenience init(callback:Callback?) {
 		self.init(nibName: nil, bundle: nil)
@@ -19,7 +19,6 @@ class LoginViewController: BamBoxViewController {
 	}
 	
 	override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-		callback = nil
 		super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
 	}
 	
@@ -33,10 +32,7 @@ class LoginViewController: BamBoxViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		spotifyButton = SpotifyConnectButton(callback)
+		spotifyConnectButton.callback = callback
 	}
 	
-	@IBAction func signInToSpotifyTapped(_ sender: SPTConnectButton) {
-		sptService.login(callback: callback)
-	}
 }

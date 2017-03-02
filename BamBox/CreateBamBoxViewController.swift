@@ -27,18 +27,16 @@ class CreateBamBoxViewController: BamBoxViewController {
 		commonInit()
 	}
 	
-	required init?(coder aDecoder: NSCoder) {
-		super.init(coder: aDecoder)
-		commonInit()
-	}
-	
 	private func commonInit() {
 		purpleView.backgroundColor = BamBoxColor.purple
 		yellowView.backgroundColor = BamBoxColor.yellow
-		redView.backgroundColor = BamBoxColor.red
+		redView.backgroundColor = BamBoxColor.orange
 		greenView.backgroundColor = BamBoxColor.green
-		
 		textField.delegate = self
+	}
+	
+	override class func show() {
+		navRouter.pushViewController(CreateBamBoxViewController())
 	}
 }
 

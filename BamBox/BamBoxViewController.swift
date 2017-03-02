@@ -8,6 +8,9 @@
 
 import UIKit
 
+protocol BamBoxVC {
+	static func show()
+}
 
 @IBDesignable
 class BamBoxViewController: UIViewController {
@@ -29,6 +32,7 @@ class BamBoxViewController: UIViewController {
 	
 	func setup() {
 		view.backgroundColor = BamBoxColor.black
+		UIApplication.shared.statusBarStyle = .lightContent
 	}
 
     override func didReceiveMemoryWarning() {
@@ -41,10 +45,6 @@ class BamBoxViewController: UIViewController {
 		setup()
 	}
 
-	/**
-		super implementation does nothing
-	*/
 	class func show() { }
-
-}	
+}
 

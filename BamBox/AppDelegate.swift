@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
 		let login = sptService.handLogin(with: url)
+		navRouter.dismiss(animated: true, completion: nil)
 		return login
     }
     
