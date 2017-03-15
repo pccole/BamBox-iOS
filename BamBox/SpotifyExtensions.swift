@@ -11,15 +11,21 @@ import Foundation
 
 extension SPTPartialPlaylist: ListItem {
 	
-	var displayImage: String {
+	var displayImageURL: URL? {
 		get {
-			return self.smallestImage.imageURL.absoluteString
+			return self.smallestImage.imageURL
 		}
 	}
 	
-	var displayTitle: String {
+	var displayHeader: String {
 		get {
 			return self.name
+		}
+	}
+	
+	var displaySubheader: String {
+		get {
+			return self.owner.displayName ?? "owner"
 		}
 	}
 	

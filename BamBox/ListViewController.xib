@@ -21,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="L6U-1U-1rR">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="16" y="0.0" width="343" height="667"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="s8c-5u-SQv"/>
@@ -31,13 +31,11 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="L6U-1U-1rR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="8JM-E3-SRD"/>
-                <constraint firstAttribute="trailing" secondItem="L6U-1U-1rR" secondAttribute="trailing" id="Gbd-kW-vBs"/>
-                <constraint firstAttribute="trailing" secondItem="L6U-1U-1rR" secondAttribute="trailing" id="I3R-IK-h8P"/>
+                <constraint firstItem="L6U-1U-1rR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="8JM-E3-SRD"/>
+                <constraint firstAttribute="trailing" secondItem="L6U-1U-1rR" secondAttribute="trailing" constant="16" id="I3R-IK-h8P"/>
                 <constraint firstAttribute="bottom" secondItem="L6U-1U-1rR" secondAttribute="bottom" id="XqY-6I-7ex"/>
                 <constraint firstItem="L6U-1U-1rR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="YPe-0s-acI"/>
                 <constraint firstAttribute="bottom" secondItem="L6U-1U-1rR" secondAttribute="bottom" id="cSe-rb-9Ql"/>
-                <constraint firstItem="L6U-1U-1rR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="oVB-sx-u1J"/>
                 <constraint firstItem="L6U-1U-1rR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="psj-9v-kQ7"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="65.5"/>
