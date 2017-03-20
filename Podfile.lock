@@ -1,5 +1,7 @@
 PODS:
   - Alamofire (4.3.0)
+  - AlamofireImage (3.2.0):
+    - Alamofire (~> 4.1)
   - GoogleInterchangeUtilities (1.2.2):
     - GoogleSymbolUtilities (~> 1.1)
   - GoogleNetworkingUtilities (1.2.2):
@@ -15,16 +17,18 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - AlamofireImage
   - NearbyMessages
 
 SPEC CHECKSUMS:
   Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
+  AlamofireImage: 157ed682cc81d3b9db4fb90c1f12180ac552d93b
   GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
   GoogleNetworkingUtilities: 3edd3a8161347494f2da60ea0deddc8a472d94cb
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleUtilities: 8bbc733218aad26306f9d4a253823986110e3358
   NearbyMessages: be3e1c44b563c020246312647f3f1128b603693d
 
-PODFILE CHECKSUM: 2a48533a76cc5ed5bb50273a6cb96b1ef9f57ade
+PODFILE CHECKSUM: eac2e513373e98d8a81140dc7b142eac3bd63755
 
 COCOAPODS: 1.2.0.rc.1

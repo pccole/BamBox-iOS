@@ -8,6 +8,7 @@ target 'BamBox' do
   # Pods for BamBox
 
   pod 'Alamofire'
+  pod 'AlamofireImage'
   pod 'NearbyMessages'
 
   target 'BamBoxTests' do

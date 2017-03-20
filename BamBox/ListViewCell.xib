@@ -6,61 +6,61 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlaylistTableViewCell" rowHeight="90" id="KGk-i7-Jjw" customClass="PlaylistTableViewCell" customModule="BamBox" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListViewCell" rowHeight="74" id="KGk-i7-Jjw" customClass="ListViewCell" customModule="BamBox" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="74"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="89.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="73.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ARh-Aa-ft4">
+                        <rect key="frame" x="8" y="9.5" width="55" height="55"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="55" id="1F0-wO-iwm"/>
+                            <constraint firstAttribute="height" constant="55" id="gvv-vf-TTZ"/>
+                        </constraints>
+                    </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="MTB-OZ-uQo">
-                        <rect key="frame" x="76" y="24.5" width="236" height="41"/>
+                        <rect key="frame" x="71" y="16.5" width="249" height="41"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IPe-Qr-XTh">
-                                <rect key="frame" x="0.0" y="0.0" width="236" height="18"/>
+                                <rect key="frame" x="0.0" y="0.0" width="249" height="18"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tIa-iS-cLW">
-                                <rect key="frame" x="0.0" y="23" width="236" height="18"/>
+                                <rect key="frame" x="0.0" y="23" width="249" height="18"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                     </stackView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ARh-Aa-ft4">
-                        <rect key="frame" x="8" y="15" width="60" height="60"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="60" id="QiI-fh-sUf"/>
-                            <constraint firstAttribute="height" constant="60" id="RVS-mj-3Ox"/>
-                        </constraints>
-                    </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="MTB-OZ-uQo" secondAttribute="trailing" constant="8" id="4Cs-TJ-Yj6"/>
-                    <constraint firstItem="MTB-OZ-uQo" firstAttribute="leading" secondItem="ARh-Aa-ft4" secondAttribute="trailing" constant="8" id="8jz-9f-3JM"/>
-                    <constraint firstItem="ARh-Aa-ft4" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Kfr-NX-wrB"/>
-                    <constraint firstItem="ARh-Aa-ft4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="RTi-0m-Hgh"/>
-                    <constraint firstItem="MTB-OZ-uQo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="16.5" id="cow-hL-R4t"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="MTB-OZ-uQo" secondAttribute="bottom" constant="16" id="nNc-Rb-Afq"/>
+                    <constraint firstAttribute="trailing" secondItem="MTB-OZ-uQo" secondAttribute="trailing" id="1PI-wP-1BG"/>
+                    <constraint firstItem="MTB-OZ-uQo" firstAttribute="leading" secondItem="ARh-Aa-ft4" secondAttribute="trailing" constant="8" id="2Ew-aA-Sjx"/>
+                    <constraint firstItem="MTB-OZ-uQo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16.5" id="6xr-sy-O3k"/>
+                    <constraint firstItem="ARh-Aa-ft4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="IWe-nS-qdn"/>
+                    <constraint firstAttribute="bottom" secondItem="MTB-OZ-uQo" secondAttribute="bottom" constant="16" id="Wkp-OD-9sz"/>
+                    <constraint firstItem="ARh-Aa-ft4" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="rkd-n3-k5G"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
-                <outlet property="albumArt" destination="ARh-Aa-ft4" id="fbp-o6-wf9"/>
-                <outlet property="albumArtWidthConstraint" destination="QiI-fh-sUf" id="YMp-Kz-Dsu"/>
+                <outlet property="albumArt" destination="ARh-Aa-ft4" id="kkN-Oj-KEY"/>
+                <outlet property="albumArtWidthConstraint" destination="1F0-wO-iwm" id="Uzg-1Z-fe5"/>
                 <outlet property="headerLabel" destination="IPe-Qr-XTh" id="ahZ-ri-Yq5"/>
                 <outlet property="subHeaderLabel" destination="tIa-iS-cLW" id="Nl6-0s-mZe"/>
             </connections>
-            <point key="canvasLocation" x="34" y="77"/>
+            <point key="canvasLocation" x="34" y="69"/>
         </tableViewCell>
     </objects>
 </document>

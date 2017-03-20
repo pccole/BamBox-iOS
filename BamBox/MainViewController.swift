@@ -10,7 +10,7 @@ import UIKit
 
 class MainViewController: BamBoxViewController {
 
-	override class func show() {
+	static func show() {
 		navRouter.setMainViewController(MainViewController())
 		navRouter.isNavigationBarHidden = true
 	}
@@ -19,31 +19,35 @@ class MainViewController: BamBoxViewController {
         super.viewDidLoad()
 		sptService.getUser(userCallback: nil)
     }
+	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		navRouter.isNavigationBarHidden = true
+	}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 	
 	@IBAction func createPlaylistTapped(_ sender: UIButton) {
+		nearby.scan()
 		guard sptService.isValidSession else {
 			LoginViewController.show() {
-				let playlist = PlaylistViewController(title: "Playlists", playlistRunable: sptService.getAllPlaylist)
+				let playlist = ListViewController(viewModel: PlaylistsListViewModel())
 				navRouter.setViewControllers([MainViewController(), playlist], animated: true)
-				navRouter.isNavigationBarHidden = false
 			}
 			return
 		}
-		PlaylistViewController.show(title: "Playlists", playlistRunable: sptService.getAllPlaylist)
+		ListViewController.show(viewModel: PlaylistsListViewModel())
 	}
 	
 	@IBAction func scanForBamBox(_ sender: UIButton) {
 		guard sptService.isValidSession else {
 			LoginViewController.show() {
-				navRouter.setViewControllers([MainViewController(), ScanBamBoxViewController()], animated: true)
-				navRouter.isNavigationBarHidden = false
+				navRouter.setViewControllers([MainViewController(), NearbyScanViewController()], animated: true)
 			}
 			return
 		}
-		ScanBamBoxViewController.show()
+		NearbyScanViewController.show()
 	}
 }

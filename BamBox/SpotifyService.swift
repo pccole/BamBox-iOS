@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import SafariServices
+import Alamofire
 
 struct Spotify {
 	static let clientId = "7c04cbd6b7e946879649b5634f4f9beb"
@@ -56,6 +57,7 @@ class SpotifyService: NSObject {
 		loginCallback = callback
 		let scopes = [SPTAuthStreamingScope,
 		              SPTAuthUserReadPrivateScope,
+		              SPTAuthUserLibraryReadScope,
 		              SPTAuthPlaylistReadCollaborativeScope,
 		              SPTAuthPlaylistReadPrivateScope,
 		              SPTAuthPlaylistModifyPublicScope,
@@ -98,13 +100,13 @@ class SpotifyService: NSObject {
 	
 	func getAllPlaylist(_ playlistCallback:@escaping ListItemCallback)  {
 		guard let u = user, let s = session else {
-			playlistCallback({throw NSError()})
+			playlistCallback({ throw NSError.init(domain: "BamBox", code: 1, userInfo: nil) })
 			return
 		}
 		
 		SPTPlaylistList.playlists(forUser: u.canonicalUserName, withAccessToken: s.accessToken) { (error:Error?, sptPlaylist:Any?) in
 			guard let playlist = sptPlaylist as? SPTPlaylistList, let partialPlaylist = playlist.items as? [SPTPartialPlaylist] else {
-				playlistCallback({throw NSError()})
+				playlistCallback({ throw NSError.init(domain: "BamBox", code: 1, userInfo: nil) })
 				return
 			}
 			print(playlist)
@@ -112,8 +114,39 @@ class SpotifyService: NSObject {
 		}
 	}
 	
-	func getTracks(for playlist:SPTPartialPlaylist, tracksCallback:@escaping ListItemCallback) {
+	func getTracks(for playlist:SPTPartialPlaylist, listItemCallback:@escaping ListItemCallback) {
 		
+		guard let url = playlist.uri, let accessToken = session?.accessToken else {
+			listItemCallback({ throw NSError.init(domain: "BamBox", code: 1, userInfo: nil) })
+			return
+		}
+		
+		SPTPlaylistSnapshot.playlist(withURI: url, accessToken: accessToken) { (error:Error?, snap:Any?) in
+			guard let s = snap as? SPTPlaylistSnapshot, let tracks = s.firstTrackPage.items as? [ListItem] else {
+				listItemCallback({ throw NSError.init(domain: "BamBox", code: 1, userInfo: nil) })
+				return
+			}
+			listItemCallback({ return tracks })
+		}
+	}
+	
+	func getPlaylist(withURI uri: String) {
+		let playlistId = uri.substringAfterLastOccurence(of: ":")!
+		let userId = user!.uri.absoluteString.substringAfterLastOccurence(of: ":")!
+		let uri = "https://api.spotify.com/v1/users/\(userId)/playlists/\(playlistId)"
+		let header = ["Authorization" : "Bearer \(session!.accessToken!)"]
+		print("Header: \(header)")
+		print("URI: \(uri)")
+		Alamofire.request(uri, method: .get, parameters: nil, headers: header).responseJSON { (result:DataResponse<Any>) in
+			guard result.result.isFailure,
+			let json = result.result.value as? [String:AnyObject] else {
+				return
+			}
+			print("Json from spotify: \(json)")
+		}
 	}
 }
+			
+	
+	
 

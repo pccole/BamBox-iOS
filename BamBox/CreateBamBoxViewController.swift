@@ -35,7 +35,7 @@ class CreateBamBoxViewController: BamBoxViewController {
 		textField.delegate = self
 	}
 	
-	override class func show() {
+	static func show() {
 		navRouter.pushViewController(CreateBamBoxViewController())
 	}
 }

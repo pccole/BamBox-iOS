@@ -7,27 +7,16 @@
 //
 
 import UIKit
+import Foundation
 
-protocol ListItem {
-	var displayTitle: String { get }
-	var displayImage: String { get }
-}
-
-protocol ListTableViewDelegate {
-	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-}
-
-typealias ListRunable = ( ( (@escaping ListItemCallback) -> Void) )
 
 class ListViewController: BamBoxViewController {
 
-	fileprivate var playlistRunable:ListRunable?
 	fileprivate var items = [ListItem]()
-	fileprivate var cellIdentifier:String?
+	fileprivate var viewModel:ListViewModel?
 	
 	lazy var tableView:UITableView = {
 		let table = UITableView()
-		table.backgroundColor = UIColor.clear
 		self.view.addSubview(table)
 		table.pinToSuperview()
 		return table
@@ -36,13 +25,15 @@ class ListViewController: BamBoxViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		navRouter.isNavigationBarHidden = false
-		
-		let barButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "StartPlaylist"), style: .plain, target: self, action: #selector(createPlaylist))
-		navRouter.viewController.navigationItem.rightBarButtonItem = barButtonItem
-		guard let runable = playlistRunable else {
-			return
-		}
-		runable({ run in
+		viewModel?.viewDidLoad(self)
+		tableView.delegate = self
+		tableView.dataSource = self
+		tableView.estimatedRowHeight = 100
+		tableView.rowHeight = UITableViewAutomaticDimension
+		tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+		tableView.backgroundColor = UIColor.clear
+		title = viewModel?.title
+		viewModel?.runable? { (run:() throws -> [ListItem]) in
 			do {
 				let items = try run()
 				self.items = items
@@ -50,25 +41,16 @@ class ListViewController: BamBoxViewController {
 			} catch {
 				print(error)
 			}
-		})
-		tableView.delegate = self
-		tableView.dataSource = self
-		tableView.estimatedRowHeight = 60
-		tableView.rowHeight = UITableViewAutomaticDimension
-		guard let id = cellIdentifier else {
-			return
 		}
-		let nib = UINib(nibName: id, bundle: nil)
-		tableView.register(nib, forCellReuseIdentifier: id)
+		viewModel?.registerCell(with: tableView)
     }
 	
-	init(title:String, cellIdentifier:String, playlistRunable:@escaping ListRunable) {
+	init(viewModel:ListViewModel) {
 		super.init(nibName: nil, bundle: nil)
-		self.title = title
-		self.playlistRunable = playlistRunable
+		self.viewModel = viewModel
 	}
 	
-	override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+	private override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
 		super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
 	}
 	
@@ -80,16 +62,15 @@ class ListViewController: BamBoxViewController {
 		CreateBamBoxViewController.show()
 	}
 
-	class func show(title:String, cellIdentifier:String, playlistRunable:@escaping ListRunable) {
-		let playlist = ListViewController(title: title, cellIdentifier: cellIdentifier, playlistRunable: playlistRunable)
-		playlist.title = title
-		navRouter.pushViewController(playlist)
+	class func show(viewModel:ListViewModel) {
+		let list = ListViewController(viewModel: viewModel)
+		navRouter.pushViewController(list)
 	}
 }
 
 extension ListViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-	
+		viewModel?.delegate?.listView(tableView, didSelect: items[indexPath.row], at: indexPath)
 	}
 }
 
@@ -99,14 +80,12 @@ extension ListViewController: UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		guard let id = cellIdentifier, let cell = tableView.dequeueReusableCell(withIdentifier: id, for: indexPath) as? PlaylistTableViewCell else {
-			return UITableViewCell()
-		}
-		cell.backgroundColor = UIColor.clear
-		guard items.count > 0 else {
+		guard items.count > 0,
+			let cell = viewModel?.dataSource?.listView(tableView, item: items[indexPath.row], cellForRowAt: indexPath) else {
+			let cell = UITableViewCell()
+			cell.textLabel?.text = "Empty Playlist"
 			return cell
 		}
-		cell.configure(for: items[indexPath.row] as! SPTPartialPlaylist)
 		return cell
 	}
 }

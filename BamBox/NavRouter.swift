@@ -11,36 +11,24 @@ import SafariServices
 
 let navRouter = NavRouter()
 
-class NavRouter: UIViewController {
+class NavRouter {
 
-	fileprivate let navController: UINavigationController = {
+	let navController: UINavigationController = {
 		let nav = UINavigationController()
 		nav.navigationBar.isTranslucent = false
-		nav.navigationBar.barTintColor = BamBoxColor.black
 		return nav
 	}()
 	
-	fileprivate override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-		super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+	var viewController: UIViewController {
+		get {
+			return navController
+		}
 	}
 	
-	required init?(coder aDecoder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
+	fileprivate init() { }
 	
-    override func viewDidLoad() {
-        super.viewDidLoad()
-		add(childVC: navController)
-    }
 }
 
-extension NavRouter {
-	fileprivate func add(childVC:UIViewController) {
-		addChildViewController(navController)
-		view.addSubview(navController.view)
-		navController.view.pinToSuperview()
-	}
-}
 
 extension NavRouter {
 	var isNavigationBarHidden:Bool {
@@ -48,7 +36,16 @@ extension NavRouter {
 			return navController.navigationBar.isHidden
 		}
 		set {
-			navController.navigationBar.isHidden = newValue
+			navController.setNavigationBarHidden(newValue, animated: true)
+			guard newValue else {
+				return
+			}
+			navController.navigationBar.backIndicatorImage = nil
+			navController.navigationBar.backIndicatorTransitionMaskImage = nil
+			navController.navigationBar.barTintColor = BamBoxColor.black
+			navController.navigationBar.tintColor = UIColor.white
+			let attributes = [NSForegroundColorAttributeName:UIColor.white]
+			navController.navigationBar.titleTextAttributes = attributes
 		}
 	}
 }
@@ -81,7 +78,7 @@ extension NavRouter {
 	/**
 		animated is true by default
 	*/
-	override func present(_ viewController:UIViewController, animated:Bool = true, completion:(() -> Void)? = nil) {
+	func present(_ viewController:UIViewController, animated:Bool = true, completion:(() -> Void)? = nil) {
 		navController.present(viewController, animated: animated, completion: completion)
 	}
 	
@@ -92,7 +89,7 @@ extension NavRouter {
 		present(navController, animated: animated, completion: completion)
 	}
 	
-	override func dismiss(animated flag: Bool = true, completion: (() -> Void)? = nil) {
+	func dismiss(animated flag: Bool = true, completion: (() -> Void)? = nil) {
 		navController.dismiss(animated: flag, completion: completion)
 	}
 	

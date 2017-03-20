@@ -8,9 +8,6 @@
 
 import UIKit
 
-protocol BamBoxVC {
-	static func show()
-}
 
 @IBDesignable
 class BamBoxViewController: UIViewController {
@@ -45,6 +42,5 @@ class BamBoxViewController: UIViewController {
 		setup()
 	}
 
-	class func show() { }
 }
 

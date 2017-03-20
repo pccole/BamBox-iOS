@@ -28,5 +28,24 @@ extension SPTPartialPlaylist: ListItem {
 			return self.owner.displayName ?? "owner"
 		}
 	}
+}
+
+extension SPTPartialTrack: ListItem {
+	var displayHeader: String {
+		get {
+			return self.name
+		}
+	}
 	
+	var displaySubheader: String {
+		get {
+			return self.album.name
+		}
+	}
+	
+	var displayImageURL: URL? {
+		get {
+			return nil
+		}
+	}
 }

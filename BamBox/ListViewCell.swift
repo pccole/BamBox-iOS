@@ -9,14 +9,14 @@
 import UIKit
 import AlamofireImage
 
-class ListTableViewCell: UITableViewCell {
+class ListViewCell: UITableViewCell {
 
 	@IBOutlet weak var albumArt: UIImageView!
 	@IBOutlet weak var headerLabel: UILabel!
 	@IBOutlet weak var subHeaderLabel: UILabel!
 	@IBOutlet weak var albumArtWidthConstraint: NSLayoutConstraint!
 	
-	static let identifier = "ListTableViewCell"
+	static let identifier = "ListViewCell"
 	
 	private var sptPlaylist:SPTPartialPlaylist?
 	
@@ -31,16 +31,17 @@ class ListTableViewCell: UITableViewCell {
 		albumArtWidthConstraint.constant = 0
 	}
 
-	func configure(for playlist:SPTPartialPlaylist) {
-		sptPlaylist = playlist
-		headerLabel.text = playlist.displayHeader
-		subHeaderLabel.text = playlist.displaySubheader
-		guard let url = playlist.displayImageURL else {
+	func configure(for listItem:ListItem) {
+		headerLabel.text = listItem.displayHeader
+		subHeaderLabel.text = listItem.displaySubheader
+		guard let url = listItem.displayImageURL else {
+			albumArtWidthConstraint.constant = 0
 			return
 		}
 		albumArtWidthConstraint.constant = 60
 		albumArt.af_setImage(withURL: url)
 	}
+	
 	
 	override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
