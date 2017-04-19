@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: BamBoxViewController {
+class LoginViewController: BaseViewController {
 	
 	private var callback:Callback?
 	@IBOutlet weak var spotifyConnectButton: SpotifyConnectButton!

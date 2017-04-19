@@ -43,6 +43,8 @@ class SpotifyService: NSObject {
 	
 	var user:SPTUser?
 	
+	fileprivate var loginCallback:Callback?
+	
 	fileprivate override init() {
 		super.init()
 		guard let auth = SPTAuth.defaultInstance() else { return }
@@ -51,7 +53,12 @@ class SpotifyService: NSObject {
 		auth.sessionUserDefaultsKey = "SpotifySession"
 	}
 	
-	private var loginCallback:Callback?
+	
+}
+
+
+// MARK: Login
+extension SpotifyService {
 	
 	func login(callback:Callback?) {
 		loginCallback = callback
@@ -61,10 +68,11 @@ class SpotifyService: NSObject {
 		              SPTAuthPlaylistReadCollaborativeScope,
 		              SPTAuthPlaylistReadPrivateScope,
 		              SPTAuthPlaylistModifyPublicScope,
-		              SPTAuthPlaylistModifyPrivateScope]
+		              SPTAuthPlaylistModifyPrivateScope,
+		              SPTAuthUserReadTopScope]
 		guard let redirctURL = Spotify.redirect.url(),
-		let url = SPTAuth.loginURL(forClientId: Spotify.clientId, withRedirectURL: redirctURL, scopes: scopes, responseType: "token")
-		else { return }
+			let url = SPTAuth.loginURL(forClientId: Spotify.clientId, withRedirectURL: redirctURL, scopes: scopes, responseType: "token")
+			else { return }
 		navRouter.present(url: url)
 	}
 	
@@ -85,7 +93,12 @@ class SpotifyService: NSObject {
 		}
 		return true
 	}
-	
+
+}
+
+// MARK: Requests
+
+extension SpotifyService {
 	func getUser(userCallback:((SPTUser?) -> Void)?) {
 		SPTUser.requestCurrentUser(withAccessToken: session?.accessToken) { (error:Error?, user:Any?) in
 			guard let u = user as? SPTUser else {
@@ -96,7 +109,6 @@ class SpotifyService: NSObject {
 			userCallback?(u)
 		}
 	}
-	
 	
 	func getAllPlaylist(_ playlistCallback:@escaping ListItemCallback)  {
 		guard let u = user, let s = session else {
@@ -130,7 +142,7 @@ class SpotifyService: NSObject {
 		}
 	}
 	
-	func getPlaylist(withURI uri: String) {
+	func getPlaylist(withURI uri: String, callback:((_ playlist:SPTPartialPlaylist) -> Void)?) {
 		let playlistId = uri.substringAfterLastOccurence(of: ":")!
 		let userId = user!.uri.absoluteString.substringAfterLastOccurence(of: ":")!
 		let uri = "https://api.spotify.com/v1/users/\(userId)/playlists/\(playlistId)"
@@ -138,11 +150,18 @@ class SpotifyService: NSObject {
 		print("Header: \(header)")
 		print("URI: \(uri)")
 		Alamofire.request(uri, method: .get, parameters: nil, headers: header).responseJSON { (result:DataResponse<Any>) in
-			guard result.result.isFailure,
-			let json = result.result.value as? [String:AnyObject] else {
-				return
+			guard result.result.isSuccess,
+				let json = result.result.value as? [String:AnyObject] else {
+					return
 			}
 			print("Json from spotify: \(json)")
+			do {
+				let playlist = try SPTPartialPlaylist(fromDecodedJSON: json)
+				print("Playlist Retrived: \(playlist)")
+				callback?(playlist)
+			} catch {
+				print(error)
+			}
 		}
 	}
 }

@@ -10,7 +10,7 @@ import UIKit
 
 
 @IBDesignable
-class BamBoxViewController: UIViewController {
+class BaseViewController: UIViewController {
 
 	@IBInspectable var backgroundColor: UIColor {
 		get {

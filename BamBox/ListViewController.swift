@@ -10,13 +10,15 @@ import UIKit
 import Foundation
 
 
-class ListViewController: BamBoxViewController {
+class ListViewController: BaseViewController {
 
 	fileprivate var items = [ListItem]()
 	fileprivate var viewModel:ListViewModel?
 	
+	
 	lazy var tableView:UITableView = {
 		let table = UITableView()
+		table.translatesAutoresizingMaskIntoConstraints = false
 		self.view.addSubview(table)
 		table.pinToSuperview()
 		return table
@@ -58,10 +60,6 @@ class ListViewController: BamBoxViewController {
 		super.init(coder: aDecoder)
 	}
 	
-	@objc private func createPlaylist() {
-		CreateBamBoxViewController.show()
-	}
-
 	class func show(viewModel:ListViewModel) {
 		let list = ListViewController(viewModel: viewModel)
 		navRouter.pushViewController(list)

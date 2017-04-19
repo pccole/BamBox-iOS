@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: BamBoxViewController {
+class MainViewController: BaseViewController {
 
 	static func show() {
 		navRouter.setMainViewController(MainViewController())
@@ -23,6 +23,7 @@ class MainViewController: BamBoxViewController {
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		navRouter.isNavigationBarHidden = true
+		nearby.reset()
 	}
 
     override func didReceiveMemoryWarning() {
@@ -30,7 +31,8 @@ class MainViewController: BamBoxViewController {
     }
 	
 	@IBAction func createPlaylistTapped(_ sender: UIButton) {
-		nearby.scan()
+//		nearby.scan()
+		nearby.isBroadCaster = true
 		guard sptService.isValidSession else {
 			LoginViewController.show() {
 				let playlist = ListViewController(viewModel: PlaylistsListViewModel())
@@ -42,6 +44,7 @@ class MainViewController: BamBoxViewController {
 	}
 	
 	@IBAction func scanForBamBox(_ sender: UIButton) {
+		nearby.isClient = true
 		guard sptService.isValidSession else {
 			LoginViewController.show() {
 				navRouter.setViewControllers([MainViewController(), NearbyScanViewController()], animated: true)

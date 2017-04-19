@@ -27,7 +27,7 @@ class PlaylistsListViewModel: NSObject, ListViewModel {
 		return self
 	}
 	
-	func viewDidLoad(_ vc: UIViewController) {
+	func viewDidLoad(_ vc: ListViewController) {
 		guard let startImage = UIImage(named: "StartPlaylist") else {
 			return
 		}
@@ -49,8 +49,7 @@ extension PlaylistsListViewModel: ListViewDelegate {
 		guard let playlist = listItem as? SPTPartialPlaylist else {
 			return
 		}
-		sptService.getPlaylist(withURI: playlist.uri.absoluteString)
-		nearby.publish(name: playlist.uri.absoluteString, type: NearbyMessageType.playlist.description)
+		ListViewController.show(viewModel: StartBamBoxViewModel(playlist: playlist))
 	}
 }
 

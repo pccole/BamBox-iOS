@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable
-class CreateBamBoxViewController: BamBoxViewController {
+class CreateBamBoxViewController: BaseViewController {
 
 	@IBOutlet weak var purpleView: UIView!
 	@IBOutlet weak var yellowView: UIView!

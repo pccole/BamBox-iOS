@@ -11,6 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NearbyScanViewController" customModule="BamBox" customModuleProvider="target">
             <connections>
+                <outlet property="imageView" destination="lq3-Rh-Ze8" id="GdI-7k-b3H"/>
+                <outlet property="playlistTitle" destination="s5B-k8-VQg" id="dWA-Xo-vaf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,29 +21,29 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lq3-Rh-Ze8">
-                    <rect key="frame" x="87" y="128" width="200" height="200"/>
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lq3-Rh-Ze8">
+                    <rect key="frame" x="88" y="128.5" width="200" height="200"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="200" id="F4U-Cu-E14"/>
                         <constraint firstAttribute="width" constant="200" id="Xvo-b4-g4v"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nta-St-Try">
-                    <rect key="frame" x="160" y="348" width="54" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5B-k8-VQg">
+                    <rect key="frame" x="187.5" y="343.5" width="0.0" height="25"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="21" id="V0f-lb-7SC"/>
+                        <constraint firstAttribute="height" constant="25" id="cLh-gI-sAr"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="22"/>
+                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="26"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="nta-St-Try" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="4ok-nv-K7q"/>
-                <constraint firstItem="nta-St-Try" firstAttribute="top" secondItem="lq3-Rh-Ze8" secondAttribute="bottom" constant="20" id="Es5-89-yzo"/>
                 <constraint firstItem="lq3-Rh-Ze8" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-105" id="Jot-p1-oeM"/>
                 <constraint firstItem="lq3-Rh-Ze8" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Ypi-Ib-b4n"/>
+                <constraint firstItem="s5B-k8-VQg" firstAttribute="top" secondItem="lq3-Rh-Ze8" secondAttribute="bottom" constant="15" id="sM2-Hp-UMS"/>
+                <constraint firstItem="s5B-k8-VQg" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="xLg-Gq-BZc"/>
             </constraints>
             <point key="canvasLocation" x="34.5" y="54.5"/>
         </view>

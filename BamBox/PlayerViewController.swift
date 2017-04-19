@@ -1,15 +1,20 @@
 //
-//  SearchViewController.swift
+//  PlayerViewController.swift
 //  BamBox
 //
-//  Created by Phil Cole on 3/10/17.
+//  Created by Phil Cole on 4/18/17.
 //  Copyright © 2017 BamBox. All rights reserved.
 //
 
 import UIKit
 
-class SearchViewController: BaseViewController {
+class PlayerViewController: BaseViewController {
 
+	@IBOutlet weak var titleLable: UILabel!
+	@IBOutlet weak var albumLabel: UILabel!
+	@IBOutlet weak var pauseButton: UIButton!
+	@IBOutlet weak var playButton: UIButton!
+	@IBOutlet weak var forwardButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,5 +25,4 @@ class SearchViewController: BaseViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-	
 }

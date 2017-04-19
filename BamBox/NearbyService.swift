@@ -29,8 +29,12 @@ enum NearbyMessageType: CustomStringConvertible {
 	}
 }
 
-protocol NearbyMessage {
-	
+protocol NearbyMessageProtocol {
+	func refresh(with messages:[GNSMessage])
+}
+
+protocol NearbyPlaylistProtocol {
+	func didRetrive(_ playlist:SPTPartialPlaylist)
 }
 
 let nearby = NearbyService()
@@ -41,6 +45,32 @@ class NearbyService {
 	private var publication:GNSPublication?
 	private var subscription:GNSSubscription?
 	private let apiKey = "AIzaSyBSrHYi4UsmtGE_q7q3Ayebu9TegtQWh_0"
+	private var messages = [GNSMessage]()
+	
+	private var _isClient:Bool = false
+	private var _isBroadCaster:Bool = false
+	
+	var isClient:Bool {
+		get {
+			return _isClient
+		}
+		set {
+			_isClient = newValue
+			_isBroadCaster = !newValue
+		}
+	}
+	var isBroadCaster:Bool {
+		get {
+			return _isBroadCaster
+		}
+		set {
+			_isBroadCaster = newValue
+			_isClient = !newValue
+		}
+	}
+	
+	var messageDelegate:NearbyMessageProtocol?
+	var playlistDelegate:NearbyPlaylistProtocol?
 	
 	fileprivate init() {
 		messageManager = GNSMessageManager(apiKey: apiKey, paramsBlock: { (params: GNSMessageManagerParams?) in
@@ -68,6 +98,11 @@ class NearbyService {
 		#if DEBUG
 			GNSMessageManager.setDebugLoggingEnabled(true)
 		#endif
+	}
+	
+	func reset() {
+		_isBroadCaster = false
+		_isClient = false
 	}
 	
 	/// Stops publishing/subscribing.
@@ -109,14 +144,20 @@ class NearbyService {
 		guard let messageString = String(bytes: message.content, encoding: .utf8) else { return }
 		print("Message found: \(messageString)")
 		print("Message Type: \(message.type)")
-		guard let messageType = message.type, let nearbyMessageType = NearbyMessageType(string: messageType) else { return }
+		guard let messageType = message.type, let nearbyMessageType = NearbyMessageType(string: messageType) else {
+			return
+		}
+		messages.append(message)
 		switch nearbyMessageType {
 		case .playlist:
-			sptService.getPlaylist(withURI: messageString)
+			sptService.getPlaylist(withURI: messageString, callback: { (playlist:SPTPartialPlaylist) in
+				self.playlistDelegate?.didRetrive(playlist)
+			})
 		}
+		messageDelegate?.refresh(with: messages)
 	}
 	
 	private func nearbyMessageLost(_ message:GNSMessage) {
-		
+		messages = messages.filter { $0 === message }
 	}
 }

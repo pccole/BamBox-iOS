@@ -22,7 +22,7 @@ protocol ListViewModel: NSObjectProtocol {
 	var runable:ListRunable? { get }
 	var delegate:ListViewDelegate? { get }
 	var dataSource:ListViewDataSource? { get }
-	func viewDidLoad(_ vc:UIViewController)
+	func viewDidLoad(_ vc:ListViewController)
 	func registerCell(with tableView:UITableView)
 }
 

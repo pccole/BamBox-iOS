@@ -14,6 +14,8 @@ class TracksListViewModel: NSObject, ListViewModel {
 	
 	private let partialPlaylist:SPTPartialPlaylist
 	
+	private var tableView:UITableView?
+	
 	var runable: ListRunable? {
 		return self.getTracks
 	}
@@ -37,8 +39,8 @@ class TracksListViewModel: NSObject, ListViewModel {
 		super.init()
 	}
 	
-	func viewDidLoad(_ vc: UIViewController) {
-		
+	func viewDidLoad(_ vc: ListViewController) {
+		tableView = vc.tableView
 	}
 	
 	func getTracks(_ listItemCallback:@escaping ListItemCallback) {
@@ -46,14 +48,16 @@ class TracksListViewModel: NSObject, ListViewModel {
 	}
 }
 
-extension TracksListViewModel: ListViewDelegate {
-	func listView(_ listView: UITableView, didSelect listItem: ListItem, at indexPath: IndexPath) {
-		// play song
-	}
-}
+extension TracksListViewModel: ListViewDelegate { }
 
 extension TracksListViewModel: ListViewDataSource {
-	func numberOfSections(in tableView: UITableView) -> Int {
-		return 1
+	func listView(_ listView: UITableView, didSelect listItem: ListItem, at indexPath: IndexPath) {
+		listView.deselectRow(at: indexPath, animated: true)
+//		let notification = Notification(name: Notification.Name(rawValue: "Play"), object: nil, userInfo: ["Track":listItem])
+//		NotificationCenter.default.post(notification)
+		guard let track = listItem as? SPTTrack else {
+			return
+		}
+//		SpotifyPlayer.play(track: track)
 	}
 }
